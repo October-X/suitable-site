@@ -1,0 +1,73 @@
+// 覆盖默认样式，消除内外边距和底色
+:where(.css-dev-only-do-not-override-amxhzi).ant-pro .ant-pro-layout .ant-pro-layout-bg-list {
+  background: var(--background-color);
+}
+
+:where(.css-dev-only-do-not-override-acm2ia).ant-layout-content .ant-pro-layout-content .css-dev-only-do-not-override-amxhzi .ant-pro-layout-has-header {
+  padding: 0;
+}
+
+:where(.css-dev-only-do-not-override-amxhzi).ant-pro .ant-pro-layout .ant-pro-layout-content {
+  padding-block: 0;
+  padding-inline: 0;
+}
+
+:where(.css-dev-only-do-not-override-acm2ia).ant-btn-primary{
+  background-color: var(--theme-color);
+}
+:where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-track{
+  background-color: var(--theme-color);
+}
+:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked,:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled){
+  background-color: var(--theme-color);
+}
+:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled){
+  background-color: var(--theme-color);
+  opacity: .8;
+  // background-color: pink;
+}
+// :where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-handle:hover::after{
+//   box-shadow: 0 0 0 2px var(--theme-color);
+// }
+// :where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-handle::after{
+//   box-shadow: 0 0 0 2px var(--theme-color);
+// }
+
+//设置滚动条样式
+
+// ::-webkit-scrollbar {
+//   width: 8px;
+//   padding: 20px 0;
+// }
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 4px;
+//   margin: 20px 0;
+//   background-color: var(--theme-color);
+//   border-top: 20px solid var(--box-background-color);
+//   border-bottom: 20px solid var(--box-background-color);
+// }
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline:none;
+}
+
+
+
+//需要定义的变量和内容
+@transition-time:.3s;
+
+.func-flex(@jc:center,@ai:center,@fd:row,@fw:nowrap){
+  display: flex;
+  align-items: @ai;
+  justify-content: @jc;
+  flex-direction: @fd;
+  flex-wrap: @fw;
+}
