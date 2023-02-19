@@ -1,0 +1,20 @@
+.virtual-scroller{
+    margin-top: 100px;
+    width: 500px;
+    height: 600px;
+    border: 1px solid orange;
+    overflow: hidden scroll;
+
+    .wapper_item{
+        background-color: antiquewhite;
+        height: 30px;
+
+        &:nth-child(odd){
+            background-color: azure;
+        }
+    }
+    .container{
+        // transform: translateY(--top);
+        background-color: aqua;
+    }
+}
