@@ -1,24 +1,30 @@
-.color-picker {
+.root{
     width: 100%;
-    .color-picker__item {
-        width: 100%;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        // width: 200px;
-        margin: 20px 0;
-        padding: 0 20px;
-        font-weight: 500;
+    :global{
+        .color-picker {
+            width: 100%;
+            .color-picker__item {
+                width: 100%;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 20px 0;
+                padding: 0 20px;
+                font-weight: 500;
 
-        &_title {
-            line-height: 30px;
-        }
+                &_title {
+                    line-height: 30px;
+                }
 
-        &__piker_input {
-            width: 100px;
-            height: 30px;
-            cursor: pointer;
+                &__piker_input {
+                    width: 100px;
+                    height: 30px;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
+
+

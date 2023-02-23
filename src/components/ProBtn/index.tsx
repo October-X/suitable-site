@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.less';
+import styles from './style.less';
 import { Switch } from 'antd';
 
 interface IntProBtn{
@@ -10,7 +10,7 @@ interface IntProBtn{
     icon:React.FC;
 }
 
-const ProBtn: React.FC = (props: IntProBtn) => {
+const ProBtn = (props: IntProBtn) => {
 const {label,type,onChange,name,icon:Icon} = props
 
   const handleChange = (checked: boolean) => {
@@ -22,13 +22,13 @@ const {label,type,onChange,name,icon:Icon} = props
   }
 
   return (
-    <div className="ProBtn">
-      <div className="ProBtn__title">{label}</div>
-      <div className="ProBtn__btn">
-        {type === 'switch'?<Switch defaultChecked onChange={handleChange} />:<div onClick={onClick}><Icon /></div>}
-        {/* <Switch defaultChecked onChange={handleChange} /> */}
-        {/* <RedoOutlined onClick={onClick}/> */}
-      </div>
+    <div className={styles.root}>
+        <div className="ProBtn">
+            <div className="ProBtn__title">{label}</div>
+            <div className="ProBtn__btn">
+                {type === 'switch'?<Switch defaultChecked onChange={handleChange} />:<div onClick={onClick}><Icon /></div>}
+            </div>
+        </div>
     </div>
   );
 };

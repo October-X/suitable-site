@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.less';
+import styles from './style.less';
 import {
   MinusCircleOutlined,
   CloseOutlined,
@@ -87,124 +87,126 @@ const CoordinateItem = (props: any) => {
   };
 
   return (
-    <div className="container">
-      {contextHolder}
-      <div
-        className="coordinate-item"
-        onClick={() => {
-          setEdit(true);
-        }}
-      >
-        <div className="coordinate-item__header">
-          <div className="header_container">
-            <div className="header_container__point">{pointData.name}</div>
-            <div
-              className="header_container__btn"
-              onClick={() => handleDelete(pointData.name)}
-            >
-              <MinusCircleOutlined />
+      <div className={styles.root}>
+        <div className="container">
+          {contextHolder}
+          <div
+              className="coordinate-item"
+              onClick={() => {
+                setEdit(true);
+              }}
+          >
+            <div className="coordinate-item__header">
+              <div className="header_container">
+                <div className="header_container__point">{pointData.name}</div>
+                <div
+                    className="header_container__btn"
+                    onClick={() => handleDelete(pointData.name)}
+                >
+                  <MinusCircleOutlined />
+                </div>
+              </div>
+            </div>
+            <div className="coordinate-item__main">
+              {mainDom.map((item) => item)}
             </div>
           </div>
-        </div>
-        <div className="coordinate-item__main">
-          {mainDom.map((item) => item)}
+          {edit || status === 'add' ? (
+              <div className="coordinate-item coordinate-item-editor">
+                <div className="coordinate-item__header">
+                  <div className="header_container">
+                    <div className="header_container__point">
+                      <Input
+                          className="input--small"
+                          key="name"
+                          value={inputs.name}
+                          onChange={(event) => {
+                            setInputs({ ...inputs, name: event.target.value });
+                          }}
+                      />
+                    </div>
+                    <div className="header_container__btns">
+                      <div
+                          className=" btns_item header_container__btn"
+                          onClick={handleConfirm}
+                      >
+                        <CheckOutlined />
+                      </div>
+                      <div
+                          className="btns_item header_container__btn"
+                          onClick={handleClose}
+                      >
+                        <CloseOutlined />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="coordinate-item__main">
+                  <div className="main_item">
+                    <div className="main_item__point">P1</div>
+                    <div className="main_item__point-detial">
+                      <Input
+                          className="input--small"
+                          key="p11"
+                          value={inputs.p11}
+                          onChange={(event) => {
+                            setInputs({ ...inputs, p11: event.target.value });
+                          }}
+                      />
+                      <Input
+                          className="input--small"
+                          key="p12"
+                          value={inputs.p12}
+                          onChange={(event) => {
+                            setInputs({ ...inputs, p12: event.target.value });
+                          }}
+                      />
+                      <Input
+                          className="input--small"
+                          key="p13"
+                          value={inputs.p13}
+                          onChange={(event) => {
+                            setInputs({ ...inputs, p13: event.target.value });
+                          }}
+                      />
+                    </div>
+                  </div>
+                  <div className="main_item">
+                    <div className="main_item__point">P2</div>
+                    <div className="main_item__point-detial">
+                      <Input
+                          className="input--small"
+                          key="p21"
+                          value={inputs.p21}
+                          onChange={(event) => {
+                            setInputs({ ...inputs, p21: event.target.value });
+                          }}
+                      />
+                      <Input
+                          className="input--small"
+                          key="p22"
+                          value={inputs.p22}
+                          onChange={(event) => {
+                            setInputs({ ...inputs, p22: event.target.value });
+                          }}
+                      />
+                      <Input
+                          className="input--small"
+                          key="p23"
+                          value={inputs.p23}
+                          onChange={(event) => {
+                            setInputs({ ...inputs, p23: event.target.value });
+                          }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          ) : (
+              ''
+          )}
         </div>
       </div>
-      {edit || status === 'add' ? (
-        <div className="coordinate-item coordinate-item-editor">
-          <div className="coordinate-item__header">
-            <div className="header_container">
-              <div className="header_container__point">
-                <Input
-                  className="input--small"
-                  key="name"
-                  value={inputs.name}
-                  onChange={(event) => {
-                    setInputs({ ...inputs, name: event.target.value });
-                  }}
-                />
-              </div>
-              <div className="header_container__btns">
-                <div
-                  className=" btns_item header_container__btn"
-                  onClick={handleConfirm}
-                >
-                  <CheckOutlined />
-                </div>
-                <div
-                  className="btns_item header_container__btn"
-                  onClick={handleClose}
-                >
-                  <CloseOutlined />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="coordinate-item__main">
-            <div className="main_item">
-              <div className="main_item__point">P1</div>
-              <div className="main_item__point-detial">
-                <Input
-                  className="input--small"
-                  key="p11"
-                  value={inputs.p11}
-                  onChange={(event) => {
-                    setInputs({ ...inputs, p11: event.target.value });
-                  }}
-                />
-                <Input
-                  className="input--small"
-                  key="p12"
-                  value={inputs.p12}
-                  onChange={(event) => {
-                    setInputs({ ...inputs, p12: event.target.value });
-                  }}
-                />
-                <Input
-                  className="input--small"
-                  key="p13"
-                  value={inputs.p13}
-                  onChange={(event) => {
-                    setInputs({ ...inputs, p13: event.target.value });
-                  }}
-                />
-              </div>
-            </div>
-            <div className="main_item">
-              <div className="main_item__point">P2</div>
-              <div className="main_item__point-detial">
-                <Input
-                  className="input--small"
-                  key="p21"
-                  value={inputs.p21}
-                  onChange={(event) => {
-                    setInputs({ ...inputs, p21: event.target.value });
-                  }}
-                />
-                <Input
-                  className="input--small"
-                  key="p22"
-                  value={inputs.p22}
-                  onChange={(event) => {
-                    setInputs({ ...inputs, p22: event.target.value });
-                  }}
-                />
-                <Input
-                  className="input--small"
-                  key="p23"
-                  value={inputs.p23}
-                  onChange={(event) => {
-                    setInputs({ ...inputs, p23: event.target.value });
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        ''
-      )}
-    </div>
   );
 };
 

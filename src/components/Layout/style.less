@@ -1,38 +1,32 @@
 @import url('@/theme/default/var.css');
 
-.suitable {
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
+.root{
+    :global{
+        .suitable {
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
 
-    &__left {
-        flex: 0 1 auto;
-        border-radius: 20px;
-    }
+            &__left {
+                flex: 0 1 auto;
+                border-radius: 20px;
+            }
 
-    &__main {
-        flex: 1 1 auto;
-        margin-left: 20px;
-        border-radius: 30px;
-        overflow: hidden;
-        position: relative;
-        background-color: var(--main-background-color);
-        color: var(--main-font-color);
+            &__main {
+                flex: 1 1 auto;
+                margin-left: 20px;
+                border-radius: 30px;
+                overflow: hidden;
+                position: relative;
+                background-color: var(--main-background-color);
+                color: var(--main-font-color);
+            }
+            &__right{
+                flex: 0 1 auto;
+                margin-left: 20px;
+                border-radius: 30px;
+            }
+        }
     }
-    &__right{
-        flex: 0 1 auto;
-        margin-left: 20px;
-        border-radius: 30px;
-    }
-        // &::after{
-        //     content: '';
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     width: 110%;
-        //     height: 110%;
-        //     filter: blur(20px);
-        //     z-index: -1;
-        // }
 }

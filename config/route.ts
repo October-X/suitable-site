@@ -69,5 +69,12 @@ export default [
     headerRender: false,
     menuRender: false,
   },
-  
+  {
+    name: '六面体',
+    path: '/login',
+    component: './Login',
+    strict :true,
+    headerRender: false,
+    menuRender: false,
+  },
 ];

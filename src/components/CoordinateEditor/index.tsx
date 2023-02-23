@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ProBtn from '@/components/ProBtn';
 import CoordinateItem from './components/CoordinateItem';
-import './style.less';
+import styles from './style.less';
 import { PlusOutlined } from '@ant-design/icons';
 import { copyData } from '@/utils/processData';
 import { notification } from 'antd';
@@ -55,33 +55,35 @@ const CoordinateEditor: React.FC = (props: any) => {
     setPoints(newPoints);
   };
   return (
-    <div className="coordinate-editor">
-      {contextHolder}
-      <div className="coordinate-editor__item">
-        <ProBtn
-          type="btn"
-          onChange={handleAdd}
-          label="添加辅助线"
-          name="add"
-          icon={PlusOutlined}
-        ></ProBtn>
-      </div>
-      <div className="shadow-container coordinate-editor__container">
-        <div className="shadow"></div>
-        <div className="main-container" ref={mainRef}>
-          {points.map((item) => (
-            <div className="coordinate-editor__item" key={item.name}>
-              <CoordinateItem
-                pointData={item}
-                delete={handleDelete}
-                modify={modifyPoint}
-                allPoints={points.map((item) => item.name)}
-                status={item.status}
-              ></CoordinateItem>
-            </div>
-          ))}
+    <div className={styles.root}>
+      <div className="coordinate-editor">
+        {contextHolder}
+        <div className="coordinate-editor__item">
+          <ProBtn
+              type="btn"
+              onChange={handleAdd}
+              label="添加辅助线"
+              name="add"
+              icon={PlusOutlined}
+          ></ProBtn>
         </div>
-        <div className="shadow"></div>
+        <div className="shadow-container coordinate-editor__container">
+          <div className="shadow"></div>
+          <div className="main-container" ref={mainRef}>
+            {points.map((item) => (
+                <div className="coordinate-editor__item" key={item.name}>
+                  <CoordinateItem
+                      pointData={item}
+                      delete={handleDelete}
+                      modify={modifyPoint}
+                      allPoints={points.map((item) => item.name)}
+                      status={item.status}
+                  ></CoordinateItem>
+                </div>
+            ))}
+          </div>
+          <div className="shadow"></div>
+        </div>
       </div>
     </div>
   );

@@ -1,78 +1,56 @@
-.coordinate-editor {
-    // background-color:var(--box-background-color);
-    // padding: 20px 0;
-    height: 100%;
-    .func-flex(flex-start, center, column);
+.root{
+    :global{
+        .coordinate-editor {
+            height: 100%;
+            .func-flex(flex-start, center, column);
 
-    &__item {
-        margin: 30px 0;
-        .func-flex(center);
-    }
+            &__item {
+                margin: 30px 0;
+                .func-flex(center);
+            }
 
-    .shadow-container {
-        flex: 1 0 auto;
-        width: 100%;
-        height: 100px;
-        transform: scale(1);
-        overflow: hidden;
-        // &::after,
-        // &::before {
-        //     content: "";
-        //     position: absolute;
-        //     width: 100%;
-        //     height: 20px;
+            .shadow-container {
+                flex: 1 0 auto;
+                width: 100%;
+                height: 100px;
+                transform: scale(1);
+                overflow: hidden;
+            }
 
-        //     filter: blur(5px);
-        //     background-color: var(--box-background-color);
-        //     opacity: .9;
-        //     z-index: 999;
-        // }
+            .main-container {
+                flex: 1 0 auto;
+                width: 100%;
+                height: 100%;
+                overflow: hidden auto;
+                scroll-behavior: smooth;
+            }
 
-        // &::before {
-        //     top: -5px;
-        // }
+            .shadow {
+                position: fixed;
+                width: 280px;
+                height: 30px;
+                overflow: hidden;
+                z-index: 1;
 
-        // &::after {
-        //     bottom: -5px;
-        // }
-    }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 1px;
+                    box-shadow: 0px 0 20px 20px var(--box-background-color);
+                    background-color: var(--box-background-color);
+                    z-index: 999;
+                }
 
-    .main-container {
-        flex: 1 0 auto;
-        width: 100%;
-        height: 100%;
-        // height: 100px;
-        overflow: hidden auto;
-        scroll-behavior: smooth;
-    }
+                &:last-child {
+                    transform: translateY(-20px) rotate(180deg);
+                }
+            }
 
-    .shadow {
-        position: fixed;
-        width: 280px;
-        height: 30px;
-        overflow: hidden;
-        z-index: 1;
-
-        &::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            // top: 10px;
-            box-shadow: 0px 0 20px 20px var(--box-background-color);
-            // box-shadow: 0px 0 20px 20px pink;
-            background-color: var(--box-background-color);
-            z-index: 999;
+            .demo {
+                position: fixed;
+                top: 0px;
+            }
         }
-
-        &:last-child {
-            // box-shadow: 0px 0 20px 20px blue;
-            transform: translateY(-20px) rotate(180deg);
-        }
-    }
-
-    .demo {
-        position: fixed;
-        top: 0px;
     }
 }

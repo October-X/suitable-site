@@ -1,22 +1,26 @@
-.ProBtn{
-    width: 230px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 1px var(--main-shadow-color);
-    .func-flex(space-between);
-    font-size: 16px;
-    transition: @transition-time;
-    background-color: var(--box-background-color);
+.root{
+    :global{
+        .ProBtn{
+            width: 230px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 1px var(--main-shadow-color);
+            .func-flex(space-between);
+            font-size: 16px;
+            transition: @transition-time;
+            background-color: var(--box-background-color);
 
-    &:hover{
-        box-shadow: 0 0 1px 1px var(--theme-color);
-    }
-    &__btn{
-        // width: 50px;
-        height: 30px;
-        .func-flex();
-        font-size: 22px;
-        cursor: pointer;
-        color: var(--theme-color);
+            &:hover{
+                box-shadow: 0 0 1px 1px var(--theme-color);
+            }
+            &__btn{
+                // width: 50px;
+                height: 30px;
+                .func-flex();
+                font-size: 22px;
+                cursor: pointer;
+                color: var(--theme-color);
+            }
+        }
     }
 }

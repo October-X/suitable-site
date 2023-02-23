@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Slider,InputNumber } from 'antd';
-import './style.less';
+import styles from './style.less';
 
 const App: React.FC = (props: any) => {
 
@@ -13,28 +13,30 @@ const App: React.FC = (props: any) => {
   };
 
   return (
-    <div className="slider">
-      <div className="slider__title">
-        <div className="slider__titla_info">{label?label:'未定义'}</div>
-        {/* <input className="slider__title_input" type="number" /> */}
-        <InputNumber
-          className="slider__title_input"
-          min={min}
-          max={max}
-          value={inputValue}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="slider__main_bar">
-        <Slider
-          min={1}
-          max={40}
-          onChange={handleChange}
-          value={typeof inputValue === 'number' ? inputValue : 0}
-          style={{width: '100%'}}
-        />
-      </div>
-    </div>
+   <div className={styles.root}>
+       <div className="slider">
+           <div className="slider__title">
+               <div className="slider__titla_info">{label?label:'未定义'}</div>
+               {/* <input className="slider__title_input" type="number" /> */}
+               <InputNumber
+                   className="slider__title_input"
+                   min={min}
+                   max={max}
+                   value={inputValue}
+                   onChange={handleChange}
+               />
+           </div>
+           <div className="slider__main_bar">
+               <Slider
+                   min={1}
+                   max={40}
+                   onChange={handleChange}
+                   value={typeof inputValue === 'number' ? inputValue : 0}
+                   style={{width: '100%'}}
+               />
+           </div>
+       </div>
+   </div>
   );
 };
 

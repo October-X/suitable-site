@@ -1,10 +1,10 @@
 import React from 'react';
-import './style.less'
+import styles from './style.less'
 import {ColorSelector} from './index.d'
 
 const ColorPicker = (props:ColorSelector) => {
 
-    const {label,name,onClick} = props 
+    const {label,name,onClick} = props
 
     const colors = [
         '#8472e2',
@@ -20,11 +20,13 @@ const ColorPicker = (props:ColorSelector) => {
     }
 
   return (
-    <div className="color-selector">
-      <div className="color-selector__title">{label?label:'未定义'}</div>
-      <div className="color-selector__main">
-        {colors.map(item=><div className="color-selector__main_item" key={item} style={{'background':item}} onClick={()=>handleClick(item)}/> )}
-      </div>
+    <div className={styles.root}>
+        <div className="color-selector">
+            <div className="color-selector__title">{label?label:'未定义'}</div>
+            <div className="color-selector__main">
+                {colors.map(item=><div className="color-selector__main_item" key={item} style={{'background':item}} onClick={()=>handleClick(item)}/> )}
+            </div>
+        </div>
     </div>
   );
 };

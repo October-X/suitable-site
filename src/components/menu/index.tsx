@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import style from './style.less';
+import styles from './style.less';
 import logo from '@/assets/logo.png';
 import { history, useLocation } from 'umi';
 import {
@@ -203,7 +203,7 @@ const App: React.FC = (props: any) => {
       value: '#f4f7ff',
       label: '文字激活颜色',
     },
-    
+
     {
       name: '--main-shadow-color',
       value: '#f4f7ff',
@@ -223,131 +223,133 @@ const App: React.FC = (props: any) => {
   },[])
 
   useEffect(() => {
-    
+
     setActiveRoute(findActiveRoute(location.pathname));
   }, [location]);
 
   return (
-    <div
-      className={
-        shrink
-          ? `${style['controller']} ${style['controller--shrink']}`
-          : style['controller']
-      }
-    >
-      <div className={style['menu']}>
-        <div
+    <div className={styles.root}>
+      <div
           className={
             shrink
-              ? `${style['menu__header']} ${style['menu__header--shrink']}`
-              : style['menu__header']
+                ? `controller controller--shrink`
+                : 'controller'
           }
-        >
-          <div className={style['header_main']}>
-            <div className={style['header_main__logo']}>
-              <img src={logo} alt="logo" />
-            </div>
-            <div className={style['header_main__title']}>SUTIABLE</div>
-          </div>
-        </div>
-        <div className={style['menu__nav']}>
-          <div className={style['nav_container']}>
-            {routes.map((item: any) => (
-              <div
-                className={
-                  item.path === activeRoute
-                    ? `${style['nav__item']} ${style['nav__item--active']}`
-                    : style['nav__item']
-                }
-                onClick={() => handleClick(item.path)}
-                key={item.path}
-              >
-                <div className={style['nav__item_icon']}>
-                  {item.icon ? <item.icon style={{ fontSize: '28px' }} /> : ''}
-                </div>
-                <div className={style['nav__item_content']}>{item.name}</div>
+      >
+        <div className={'menu'}>
+          <div
+              className={
+                shrink
+                    ? `menu__header menu__header--shrink`
+                    : 'menu__header'
+              }
+          >
+            <div className='header_main'>
+              <div className='header_main__logo'>
+                <img src={logo} alt="logo" />
               </div>
-            ))}
+              <div className='header_main__title'>SUTIABLE</div>
+            </div>
+          </div>
+          <div className='menu__nav'>
+            <div className='nav_container'>
+              {routes.map((item: any) => (
+                  <div
+                      className={
+                        item.path === activeRoute
+                            ? `nav__item nav__item--active`
+                            : 'nav__item'
+                      }
+                      onClick={() => handleClick(item.path)}
+                      key={item.path}
+                  >
+                    <div className='nav__item_icon'>
+                      {item.icon ? <item.icon style={{ fontSize: '28px' }} /> : ''}
+                    </div>
+                    <div className='nav__item_content'>{item.name}</div>
+                  </div>
+              ))}
+            </div>
+            <div
+                className={
+                  shrink
+                      ? `welcome welcome--shrink`
+                      : 'welcome'
+                }
+            >
+              <div className='welcome__title'>
+                <p>WelCome To Use</p>
+                <p>Suitable</p>
+              </div>
+              <div className='welcome__info'>
+                Help you learn solid geometry
+              </div>
+              <div className='welcome__btn' onClick={showDrawer}>
+                <div>Design Theme</div>
+                <div>
+                  <GoogleCircleFilled style={{ fontSize: '24px' }} />
+                </div>
+              </div>
+            </div>
           </div>
           <div
-            className={
-              shrink
-                ? `${style['welcome']} ${style['welcome--shrink']}`
-                : style['welcome']
-            }
+              className={
+                shrink
+                    ? `menu__btn menu__btn--shrink`
+                    : 'menu__btn'
+              }
+              onClick={() => setShrink(!shrink)}
           >
-            <div className={style['welcome__title']}>
-              <p>WelCome To Use</p>
-              <p>Suitable</p>
-            </div>
-            <div className={style['welcome__info']}>
-              Help you learn solid geometry
-            </div>
-            <div className={style['welcome__btn']} onClick={showDrawer}>
-              <div>Design Theme</div>
-              <div>
-                <GoogleCircleFilled style={{ fontSize: '24px' }} />
-              </div>
+            <div className='menu__btn_icon'>
+              {shrink ? (
+                  <DoubleRightOutlined style={{ fontSize: '34px' }} />
+              ) : (
+                  <DoubleLeftOutlined style={{ fontSize: '34px' }} />
+              )}
             </div>
           </div>
         </div>
-        <div
-          className={
-            shrink
-              ? `${style['menu__btn']} ${style['menu__btn--shrink']}`
-              : style['menu__btn']
-          }
-          onClick={() => setShrink(!shrink)}
+        <Drawer
+            title="Custom Theme"
+            placement="left"
+            width={350}
+            onClose={onClose}
+            open={open}
+            extra={
+              <Space>
+                <Button onClick={onDefault}>default</Button>
+                <Button type="primary" onClick={onConfirm}>
+                  OK
+                </Button>
+              </Space>
+            }
         >
-          <div className={style['menu__btn_icon']}>
-            {shrink ? (
-              <DoubleRightOutlined style={{ fontSize: '34px' }} />
-            ) : (
-              <DoubleLeftOutlined style={{ fontSize: '34px' }} />
-            )}
+          <div>
+            <ColorPicker
+                //@ts-ignore
+                config={configs}
+                colors={colors}
+                ref={colorPickerRef}
+            ></ColorPicker>
+            <div className='themes'>
+              {themes.map((item, index) => (
+                  <div className='theme__item' key={index}>
+                    <div
+                        className='theme_btn'
+                        onClick = {()=>{
+                          changeTheme(item)
+                          setOpen(false)
+                        }}
+                        style={{
+                          background: `linear-gradient(to left, ${item['--theme-color']} 50%, ${item['--background-color']} 50%)`,
+                        }}
+                    ></div>
+                  </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </Drawer>
       </div>
-      <Drawer
-        title="Custom Theme"
-        placement="left"
-        width={350}
-        onClose={onClose}
-        open={open}
-        extra={
-          <Space>
-            <Button onClick={onDefault}>default</Button>
-            <Button type="primary" onClick={onConfirm}>
-              OK
-            </Button>
-          </Space>
-        }
-      >
-        <div>
-          <ColorPicker
-            //@ts-ignore
-            config={configs}
-            colors={colors}
-            ref={colorPickerRef}
-          ></ColorPicker>
-          <div className={style['themes']}>
-            {themes.map((item, index) => (
-              <div className={style['theme__item']} key={index}>
-                <div
-                  className={style['theme_btn']}
-                  onClick = {()=>{
-                    changeTheme(item)
-                    setOpen(false)
-                  }}
-                  style={{
-                    background: `linear-gradient(to left, ${item['--theme-color']} 50%, ${item['--background-color']} 50%)`,
-                  }}
-                ></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Drawer>
     </div>
   );
 };
