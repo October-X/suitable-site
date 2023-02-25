@@ -3,6 +3,7 @@
   height: 100%;
   min-width: 320px;
   min-height: 100vh;
+  overflow: hidden;
   .func-flex();
   position: relative;
   background: url('../../assets/login-bg.png') no-repeat center center/100%, 100%;
@@ -23,8 +24,8 @@
           .func-flex(flex-start);
 
           .title__logo {
-            width: 48px;
-            height: 48px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             background-color: var(--theme-color);
             border: 5px solid var(--background-color);
@@ -40,7 +41,7 @@
           .title__content {
             font-size: 32px;
             font-weight: 700;
-            margin-left: 10px;
+            margin-left: 20px;
           }
 
         }
@@ -61,21 +62,15 @@
           }
         }
 
-        .content-middle{
-          margin:42px 0 24px 0;
+        .content-middle {
+          margin: 42px 0 24px 0;
         }
       }
 
       &__right {
-        width: 440px;
-        height: 520px;
-        border: 1px solid rgba(19, 18, 43, .07);
-        box-shadow: 0 22px 50px #d9e0fd5c;
-        border-radius: 16px;
         position: relative;
-        .func-flex();
-        background-color: #ffffff;
       }
     }
+
   }
 }

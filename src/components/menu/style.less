@@ -1,6 +1,7 @@
-.root{
+.root {
   height: 100%;
-  :global{
+
+  :global {
     .controller {
       width: 280px;
       border-radius: 30px;
@@ -49,8 +50,7 @@
             object-fit: contain;
             border-radius: 50%;
             border: 5px solid var(--background-color);
-            box-shadow: 0 0 10px 5px var(--main-shadow-color);
-          ;
+            box-shadow: 0 0 10px 5px var(--main-shadow-color);;
             background-color: var(--theme-color);
             .func-flex();
 
@@ -197,7 +197,11 @@
         }
       }
     }
+  }
+}
 
+.container {
+  :global {
     .themes {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -214,7 +218,6 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background-color: antiquewhite;
         background: linear-gradient(to left, #ffffff 50%, #fd8b35 50%);
         box-shadow: 5px 10px 10px 5px #eee;
         cursor: pointer;
@@ -224,7 +227,8 @@
           transform: scale(1.2);
         }
 
-        &:nth-child(2) {}
+        &:nth-child(2) {
+        }
       }
     }
   }

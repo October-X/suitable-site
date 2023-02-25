@@ -18,14 +18,23 @@
 :where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-track{
   background-color: var(--theme-color);
 }
-:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked,:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled){
+
+:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked, :where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
   background-color: var(--theme-color);
 }
-:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled){
+
+:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
   background-color: var(--theme-color);
   opacity: .8;
   // background-color: pink;
 }
+
+:where(.css-dev-only-do-not-override-acm2ia).ant-btn-primary:not(:disabled):hover {
+  background-color: var(--theme-color);
+  opacity: .8;
+  transition: @transition-time;
+}
+
 // :where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-handle:hover::after{
 //   box-shadow: 0 0 0 2px var(--theme-color);
 // }

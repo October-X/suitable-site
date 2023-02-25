@@ -8,9 +8,8 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: 'SUTIABLE',
-    name: 'myLayout',
-    conponent: '../src/layouts/index.tsx',
+      name: 'basicLayout',
+      component: '@/layouts/default/index.tsx',
   },
   routes,
   npmClient: 'yarn',

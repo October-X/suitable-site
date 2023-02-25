@@ -17,6 +17,7 @@
 //     },
 //   };
 // };
+import {message} from 'antd'
 
 
 //初始化主题
@@ -30,12 +31,37 @@ const defaultTheme = {
   };
 const changeTheme = (datas: object) => {
   for (const key in datas) {
-    //@ts-ignore
-    document.documentElement.style.setProperty(key, datas[key]);
+      //@ts-ignore
+      document.documentElement.style.setProperty(key, datas[key]);
   }
 };
 
 let theme = localStorage.getItem('theme');
 if (theme) {
-  changeTheme(theme?JSON.parse(theme):defaultTheme);
+    changeTheme(theme ? JSON.parse(theme) : defaultTheme);
+}
+
+
+// 全局初始化数据配置，用于 Layout 用户信息和权限初始化
+// 更多信息见文档：https://next.umijs.org/docs/api/runtime-config#getinitialstate
+export async function getInitialState() {
+    if (location.pathname === '/login') {
+        // 强行跳登录页
+        // 判断是否有有效的 token
+        const token = localStorage.getItem('login');
+        if (token) {
+            // 不仅有 token，而且 token 是有效的
+            // 不允许你去 login
+            message.warning('请先退出后在登录');
+            history.go(-1);
+        }
+    } else {
+        // 强行要跳内部页面
+        if (!localStorage.getItem('login')) {
+
+            localStorage.removeItem("login");
+            location.href = "/login";
+            message.warning('请重新登录');
+        }
+    }
 }

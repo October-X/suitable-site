@@ -14,6 +14,7 @@
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-components": "^2.0.1",
     "@umijs/max": "^4.0.41",
+    "animate.css": "^4.1.1",
     "antd": "^5.0.0",
     "react-resize-detector": "^7.1.2",
     "three": "^0.148.0"

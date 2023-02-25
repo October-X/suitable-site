@@ -30,104 +30,102 @@ const findRouter = (routes: any, pathname: string): null | object => {
   return result;
 };
 const localData = localStorage.getItem('theme')
-const originColors = localData&&JSON.parse(localData);
+const originColors = localData && JSON.parse(localData);
 console.log(originColors);
 
+const defaultTheme = {
+  '--background-color': '#f4f7ff',
+  '--theme-color': '#fd8b35',
+  '--font-color': '#97a09b',
+  '--nav-active-color': '#0b2021',
+  '--box-background-color': '#ffffff',
+  '--main-shadow-color': '#eeeeee',
+  '--main-background-color': '#ffffff',
+  '--main-font-color': '#000000',
+};
 
-/**
- * 导航组件
- */
-const App: React.FC = (props: any) => {
-  const defaultTheme = {
+const themes = [
+  // 极简白橙
+  {
     '--background-color': '#f4f7ff',
     '--theme-color': '#fd8b35',
     '--font-color': '#97a09b',
     '--nav-active-color': '#0b2021',
     '--box-background-color': '#ffffff',
     '--main-shadow-color': '#eeeeee',
-    '--main-background-color':'#ffffff',
-    '--main-font-color':'#000000',
-  };
-  const themes = [
-    // 极简黑橙
-    {
-      '--background-color': '#1d1d1f',
-      '--theme-color': '#fd8b35',
-      '--font-color': '#ffffff',
-      '--nav-active-color': '#fd8b35',
-      '--box-background-color': '#000000',
-      '--main-shadow-color': '#1c1c1c',
-      '--main-background-color':'#ffffff',
-      '--main-font-color':'#000000',
-    },
-    // 极简白绿
-    {
-      '--background-color': '#f4f7ff',
-      '--theme-color': '#1cbf73',
-      '--font-color': '#97a09b',
-      '--nav-active-color': '#1cbf73',
-      '--box-background-color': '#ffffff',
-      '--main-shadow-color': '#eeeeee',
-      '--main-background-color':'#ffffff',
-      '--main-font-color':'#000000',
-    },
-    // 极简桃粉
-    {
-      '--background-color': '#f4a2b3',
-      '--theme-color': '#ff7a7a',
-      '--font-color': '#ffffff',
-      '--nav-active-color': '#ff8a8a',
-      '--box-background-color': '#ffc7d2',
-      '--main-shadow-color': '#ffd6d6',
-      '--main-background-color':'#ffffff',
-      '--main-font-color':'#000000',
-    },
-    // 天空粉白
-    {
-      '--background-color': '#b8c6d1',
-      '--theme-color': '#ebcac5',
-      '--font-color': '#a0aebb',
-      '--nav-active-color': '#ebcac5',
-      '--box-background-color': '#ffffff',
-      '--main-shadow-color': '#ebebeb',
-      '--main-background-color':'#ffffff',
-      '--main-font-color':'#000000',
-    },
-    // 极简蓝白
-    {
-      '--background-color': '#29375a',
-      '--theme-color': '#36d2c4',
-      '--font-color': '#596788',
-      '--nav-active-color': '#36d2c4',
-      '--box-background-color': '#ffffff',
-      '--main-shadow-color': '#ebebeb',
-      '--main-background-color':'#ffffff',
-      '--main-font-color':'#000000',
-    },
-    //白紫
-    {
-      '--background-color': '#d1d6f3',
-      '--theme-color': '#9c558d',
-      '--font-color': '#97a09b',
-      '--nav-active-color': '#be9dda',
-      '--box-background-color': '#ffffff',
-      '--main-shadow-color': '#eeeeee',
-      '--main-background-color':'#ffffff',
-      '--main-font-color':'#000000',
-    },
-  ];
-  const { routes } = props;
+    '--main-background-color': '#ffffff',
+    '--main-font-color': '#000000',
+  },
+  // 极简白绿
+  {
+    '--background-color': '#f4f7ff',
+    '--theme-color': '#1cbf73',
+    '--font-color': '#97a09b',
+    '--nav-active-color': '#1cbf73',
+    '--box-background-color': '#ffffff',
+    '--main-shadow-color': '#eeeeee',
+    '--main-background-color': '#ffffff',
+    '--main-font-color': '#000000',
+  },
+  // 极简桃粉
+  {
+    '--background-color': '#f4a2b3',
+    '--theme-color': '#ff7a7a',
+    '--font-color': '#ffffff',
+    '--nav-active-color': '#ff8a8a',
+    '--box-background-color': '#ffc7d2',
+    '--main-shadow-color': '#ffd6d6',
+    '--main-background-color': '#ffffff',
+    '--main-font-color': '#000000',
+  },
+  // 天空粉白
+  {
+    '--background-color': '#b8c6d1',
+    '--theme-color': '#ebcac5',
+    '--font-color': '#a0aebb',
+    '--nav-active-color': '#ebcac5',
+    '--box-background-color': '#ffffff',
+    '--main-shadow-color': '#ebebeb',
+    '--main-background-color': '#ffffff',
+    '--main-font-color': '#000000',
+  },
+  // 极简蓝白
+  {
+    '--background-color': '#29375a',
+    '--theme-color': '#36d2c4',
+    '--font-color': '#596788',
+    '--nav-active-color': '#36d2c4',
+    '--box-background-color': '#ffffff',
+    '--main-shadow-color': '#ebebeb',
+    '--main-background-color': '#ffffff',
+    '--main-font-color': '#000000',
+  },
+  //白紫
+  {
+    '--background-color': '#d1d6f3',
+    '--theme-color': '#9c558d',
+    '--font-color': '#97a09b',
+    '--nav-active-color': '#be9dda',
+    '--box-background-color': '#ffffff',
+    '--main-shadow-color': '#eeeeee',
+    '--main-background-color': '#ffffff',
+    '--main-font-color': '#000000',
+  },
+];
+
+/**
+ * 导航组件
+ */
+const App: React.FC = (props: any) => {
+  const {routes} = props;
   const [activeRoute, setActiveRoute] = useState('');
   const [colors, setColors] = useState(
-    originColors ? originColors : defaultTheme,
+      originColors ? originColors : defaultTheme,
   );
   const [shrink, setShrink] = useState(false);
   const location = useLocation();
   const handleClick = (route: string) => {
-    // setActiveRoute(route);
-    // setTimeout(()=>{
-      history.push(route);
-    // },300)
+    history.replace(route);
   };
 
   const changeTheme = (datas: object) => {
@@ -232,7 +230,7 @@ const App: React.FC = (props: any) => {
       <div
           className={
             shrink
-                ? `controller controller--shrink`
+                ? 'controller controller--shrink'
                 : 'controller'
           }
       >
@@ -240,7 +238,7 @@ const App: React.FC = (props: any) => {
           <div
               className={
                 shrink
-                    ? `menu__header menu__header--shrink`
+                    ? 'menu__header menu__header--shrink'
                     : 'menu__header'
               }
           >
@@ -257,7 +255,7 @@ const App: React.FC = (props: any) => {
                   <div
                       className={
                         item.path === activeRoute
-                            ? `nav__item nav__item--active`
+                            ? 'nav__item nav__item--active'
                             : 'nav__item'
                       }
                       onClick={() => handleClick(item.path)}
@@ -273,7 +271,7 @@ const App: React.FC = (props: any) => {
             <div
                 className={
                   shrink
-                      ? `welcome welcome--shrink`
+                      ? 'welcome welcome--shrink'
                       : 'welcome'
                 }
             >
@@ -295,7 +293,7 @@ const App: React.FC = (props: any) => {
           <div
               className={
                 shrink
-                    ? `menu__btn menu__btn--shrink`
+                    ? 'menu__btn menu__btn--shrink'
                     : 'menu__btn'
               }
               onClick={() => setShrink(!shrink)}
@@ -317,14 +315,14 @@ const App: React.FC = (props: any) => {
             open={open}
             extra={
               <Space>
-                <Button onClick={onDefault}>default</Button>
+                {/*<Button onClick={onDefault}>default</Button>*/}
                 <Button type="primary" onClick={onConfirm}>
                   OK
                 </Button>
               </Space>
             }
         >
-          <div>
+          <div className={styles.container}>
             <ColorPicker
                 //@ts-ignore
                 config={configs}

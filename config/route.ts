@@ -4,16 +4,12 @@ import {
   AppstoreFilled,
   DribbbleCircleFilled,
   DashboardFilled,
-  BuildOutlined,
 } from '@ant-design/icons';
 
 export default [
-  
-
   // 这边的路径实在src/page目录下
   {
     path: '/',
-    // redirect: '/home',
     headerRender: false,
     menuRender: false,
     component: '../layouts/default',
@@ -23,7 +19,6 @@ export default [
         name: '首页',
         path: '/home',
         component: './Home',
-        // menuRender: false,
         icon: HomeFilled,
       },
       {
@@ -45,7 +40,7 @@ export default [
         component: './Cube',
         icon: DribbbleCircleFilled,
       },
-      
+
       // {
       //   name: ' 测试',
       //   path: '/test',
@@ -57,7 +52,7 @@ export default [
         path: '/test2',
         component: './Test2',
         icon: DashboardFilled,
-        
+
       },
     ],
   },
@@ -70,11 +65,11 @@ export default [
     menuRender: false,
   },
   {
-    name: '六面体',
-    path: '/login',
-    component: './Login',
-    strict :true,
-    headerRender: false,
-    menuRender: false,
+      name: 'login',
+      path: '/login',
+      component: './Login',
+      strict: true,
+      headerRender: false,
+      menuRender: false,
   },
 ];

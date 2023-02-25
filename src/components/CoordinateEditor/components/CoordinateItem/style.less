@@ -2,7 +2,8 @@
     width:100%;
     :global{
         .container {
-            position: relative;
+          position: relative;
+          .func-flex();
         }
 
         .coordinate-item {
@@ -69,8 +70,6 @@
 
         .coordinate-item-editor {
             position: absolute;
-            top: 0;
-            left: 0;
             z-index: 999;
             animation: shake @transition-time linear;
             box-shadow: 0 0 10px 1px var(--theme-color);
