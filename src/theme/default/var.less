@@ -12,14 +12,16 @@
   padding-inline: 0;
 }
 
-:where(.css-dev-only-do-not-override-acm2ia).ant-btn-primary{
-  background-color: var(--theme-color);
-}
-:where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-track{
+:where(.css-dev-only-do-not-override-acm2ia).ant-btn-primary {
   background-color: var(--theme-color);
 }
 
-:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked, :where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+:where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-track {
+  background-color: var(--theme-color);
+}
+
+:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked,
+:where(.css-dev-only-do-not-override-acm2ia).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
   background-color: var(--theme-color);
 }
 
@@ -35,6 +37,15 @@
   transition: @transition-time;
 }
 
+:where(.css-dev-only-do-not-override-acm2ia).ant-card:not(.ant-card-bordered) {
+  box-shadow: 0 -2px 6px 0 rgb(0 0 0 / 3%), 0 1px 6px -1px rgb(0 0 0 / 2%), 0 2px 4px 0 rgb(0 0 0 / 2%);
+  cursor: pointer;
+  transition: @transition-time;
+}
+:where(.css-dev-only-do-not-override-acm2ia).ant-card:not(.ant-card-bordered):hover{
+  transform: translateY(-10px);
+}
+
 // :where(.css-dev-only-do-not-override-acm2ia).ant-slider .ant-slider-handle:hover::after{
 //   box-shadow: 0 0 0 2px var(--theme-color);
 // }
@@ -44,17 +55,18 @@
 
 //设置滚动条样式
 
-// ::-webkit-scrollbar {
-//   width: 8px;
-//   padding: 20px 0;
-// }
-// ::-webkit-scrollbar-thumb {
-//   border-radius: 4px;
-//   margin: 20px 0;
-//   background-color: var(--theme-color);
-//   border-top: 20px solid var(--box-background-color);
-//   border-bottom: 20px solid var(--box-background-color);
-// }
+::-webkit-scrollbar {
+  width: 8px;
+  padding: 20px 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  margin: 20px 0;
+  background-color: var(--theme-color);
+  border-top: 20px solid var(--box-background-color);
+  border-bottom: 20px solid var(--box-background-color);
+}
 
 
 
@@ -65,15 +77,15 @@
   border: 0;
   box-sizing: border-box;
   background-color: transparent;
-  outline:none;
+  outline: none;
 }
 
 
 
 //需要定义的变量和内容
-@transition-time:.3s;
+@transition-time: .3s;
 
-.func-flex(@jc:center,@ai:center,@fd:row,@fw:nowrap){
+.func-flex(@jc: center, @ai: center, @fd: row, @fw: nowrap) {
   display: flex;
   align-items: @ai;
   justify-content: @jc;

@@ -115,7 +115,7 @@ export default function Login() {
                                 ]}
                                 hasFeedback
                             >
-                                <Input.Password placeholder="password" allowClear/>
+                                <Input.Password placeholder="请输入密码" allowClear/>
                             </Form.Item>
                             <Form.Item
                                 name="confirmPassword"
