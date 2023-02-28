@@ -1,0 +1,38 @@
+.cards {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .func-flex(flex-start, felx-start, row, wrap);
+  gap: 50px;
+}
+
+.card__item {
+  display: flex;
+  width: 350px;
+  height: 140px;
+  padding: 20px 20px;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 0 2px #d2d2d2;
+  .func-flex(space-between, flex-start, column);
+  cursor: pointer;
+  transition: @transition-time;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  :global {
+
+    .item_title {
+      font-size: 18px;
+    }
+
+    .item_desc {
+      width: 100%;
+      color: var(--font-color);
+      .func-flex(space-between);
+    }
+  }
+}
+

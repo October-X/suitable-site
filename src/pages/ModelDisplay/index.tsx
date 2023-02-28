@@ -12,7 +12,7 @@ const sliceArr = (arr: [], count?: number = 4) => {
   }, []);
 };
 
-const AccessPage: React.FC = () => {
+const ModelDisplay: React.FC = () => {
   const cubes = [
     {
       name: '立方体',
@@ -61,4 +61,4 @@ const AccessPage: React.FC = () => {
   );
 };
 
-export default AccessPage;
+export default ModelDisplay;
