@@ -7,12 +7,12 @@
         }
 
         .coordinate-item {
-            width: 230px;
-            padding: 20px;
+            width: 180px;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 0 10px 1px var(--main-shadow-color);
             .func-flex(space-between, center, column);
-            font-size: 16px;
+            font-size: 15px;
             transition: @transition-time;
             background-color: var(--box-background-color);
             color: var(--nav-active-color);
@@ -24,10 +24,9 @@
 
             &__header {
                 width: 100%;
-                font-size: 18px;
-                padding-bottom: 20px;
+                padding-bottom: 5px;
 
-                border-bottom: 3px solid var(--main-shadow-color);
+                border-bottom: 2px solid var(--main-shadow-color);
 
                 .header_container {
                     .func-flex(space-between);
@@ -57,11 +56,10 @@
                 .main_item {
                     width: 100%;
                     .func-flex(space-between);
-                    padding: 10px 0;
+                    padding: 5px 0;
 
                     &__point {
-                        font-size: 18px;
-                        font-weight: 600;
+                        display: flex;
                     }
                 }
             }
@@ -99,12 +97,12 @@
 
         }
 
-        .input--small{
-            width:40px;
-            padding:0 5px;
-            margin-left: 10px;
+        .input--small {
+            width: 40px;
+            padding: 0 5px;
+            margin-left: 1px;
 
-            &:first-child{
+            &:first-child {
                 margin: 0;
             }
         }

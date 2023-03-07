@@ -31,7 +31,6 @@ const findRouter = (routes: any, pathname: string): null | object => {
 };
 const localData = localStorage.getItem('theme')
 const originColors = localData && JSON.parse(localData);
-console.log(originColors);
 
 const defaultTheme = {
   '--background-color': '#f4f7ff',
@@ -69,13 +68,13 @@ const themes = [
   },
   // 极简桃粉
   {
-    '--background-color': '#f4a2b3',
+    '--background-color': '#fff5f5',
     '--theme-color': '#ff7a7a',
     '--font-color': '#ffffff',
     '--nav-active-color': '#ff8a8a',
     '--box-background-color': '#ffc7d2',
     '--main-shadow-color': '#ffd6d6',
-    '--main-background-color': '#ffffff',
+    '--main-background-color': '#fff5f5',
     '--main-font-color': '#000000',
   },
   // 天空粉白
@@ -91,23 +90,23 @@ const themes = [
   },
   // 极简蓝白
   {
-    '--background-color': '#29375a',
+    '--background-color': '#fefbfb',
     '--theme-color': '#36d2c4',
-    '--font-color': '#596788',
+    '--font-color': '#e6e6e6',
     '--nav-active-color': '#36d2c4',
-    '--box-background-color': '#ffffff',
-    '--main-shadow-color': '#ebebeb',
+    '--box-background-color': '#29375a',
+    '--main-shadow-color': '#3f485f',
     '--main-background-color': '#ffffff',
     '--main-font-color': '#000000',
   },
-  //白紫
+  //机械之心
   {
-    '--background-color': '#d1d6f3',
-    '--theme-color': '#9c558d',
-    '--font-color': '#97a09b',
-    '--nav-active-color': '#be9dda',
-    '--box-background-color': '#ffffff',
-    '--main-shadow-color': '#eeeeee',
+    '--background-color': '#ffffff',
+    '--theme-color': '#922041',
+    '--font-color': '#ebe8e8',
+    '--nav-active-color': '#922041',
+    '--box-background-color': '#29375a',
+    '--main-shadow-color': '#3f485f',
     '--main-background-color': '#ffffff',
     '--main-font-color': '#000000',
   },
@@ -234,7 +233,7 @@ const App: React.FC = (props: any) => {
                 : 'controller'
           }
       >
-        <div className={'menu'}>
+        <div className='menu'>
           <div
               className={
                 shrink
@@ -244,9 +243,9 @@ const App: React.FC = (props: any) => {
           >
             <div className='header_main'>
               <div className='header_main__logo'>
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo"/>
               </div>
-              <div className='header_main__title'>SUTIABLE</div>
+              <div className='header_main__title'>SUITABLE</div>
             </div>
           </div>
           <div className='menu__nav'>
@@ -262,7 +261,7 @@ const App: React.FC = (props: any) => {
                       key={item.path}
                   >
                     <div className='nav__item_icon'>
-                      {item.icon ? <item.icon style={{ fontSize: '28px' }} /> : ''}
+                      {item.icon ? <item.icon style={{fontSize: 18}}/> : ''}
                     </div>
                     <div className='nav__item_content'>{item.name}</div>
                   </div>
@@ -300,9 +299,9 @@ const App: React.FC = (props: any) => {
           >
             <div className='menu__btn_icon'>
               {shrink ? (
-                  <DoubleRightOutlined style={{ fontSize: '34px' }} />
+                  <DoubleRightOutlined style={{fontSize: 20}}/>
               ) : (
-                  <DoubleLeftOutlined style={{ fontSize: '34px' }} />
+                  <DoubleLeftOutlined style={{fontSize: 20}}/>
               )}
             </div>
           </div>

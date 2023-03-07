@@ -5,6 +5,7 @@ import { useModel } from '@umijs/max';
 import styles from './index.less';
 import VirualScroller from '@/components/VirualScroller';
 import {history} from 'umi';
+import Loading from "@/loading";
 
 const HomePage: React.FC = () => {
     const {name} = useModel('global');
@@ -16,7 +17,7 @@ const HomePage: React.FC = () => {
 
     return (
         <PageContainer ghost>
-            {/* <Loading></Loading> */}
+            {/*<Loading></Loading>*/}
             <div className={styles.container} onClick={handleGetColors}>
                 <Guide name={trim(name)}/>
             </div>

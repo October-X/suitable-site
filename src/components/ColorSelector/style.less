@@ -2,15 +2,14 @@
     width: 100%;
     :global{
         .color-selector{
-            width: 230px;
+            width: 180px;
             padding: 1px;
             border-radius: 10px;
             box-shadow: 0 0 10px 1px var(--main-shadow-color);
-            font-size: 16px;
             transition: @transition-time;
             border: 0;
 
-            &:hover{
+            &:hover {
                 box-shadow: 0 0 1px 1px var(--theme-color);
             }
 
@@ -19,13 +18,13 @@
             }
             &__main{
                 .func-flex(space-between);
-                &_item{
+                &_item {
                     cursor: pointer;
-                    width: 20px;
-                    height: 20px;
+                    width: 15px;
+                    height: 15px;
                     transition: @transition-time;
 
-                    &:hover{
+                    &:hover {
                         opacity: .8;
                     }
                 }

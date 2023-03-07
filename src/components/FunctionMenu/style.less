@@ -4,34 +4,35 @@
   :global {
     .function-menu {
       background: var(--box-background-color);
-      width: 280px;
+      width: 230px;
       height: 100%;
       border-radius: 30px;
       box-sizing: border-box;
-      padding: 40px 0;
+      padding: 20px 0;
       color: var(--font-color);
       .func-flex(flex-start, center, column);
 
       &__header {
         .func-flex(flex-start);
         width: 100%;
-        padding: 10px 30px;
-        margin-bottom: 40px;
+        padding: 0 30px;
+        margin-bottom: 10px;
         transition: @transition-time;
 
-        &_container{
+        &_container {
           .func-flex(space-between);
           width: 100%;
-          &__icon{
-            width: 30px;
-            height: 30px;
-            font-size: 5ex;
+
+          &__icon {
+            width: 20px;
+            height: 20px;
+            font-size: 4ex;
             .func-flex();
-            color:var(--theme-color);
+            color: var(--theme-color);
             cursor: pointer;
           }
-          &__title{
-            font-size: 3ex;
+          &__title {
+            font-size: 18px;
             font-weight: 600;
           }
         }

@@ -4,20 +4,21 @@
 
   :global {
     .controller {
-      width: 300px;
+      width: 230px;
       border-radius: 30px;
       position: relative;
       height: 100%;
       transition: @transition-time;
       background-color: var(--box-background-color);
+      overflow: hidden;
 
       &--shrink {
-        width: 92px;
+        width: 74px;
       }
     }
 
     .menu__btn--shrink {
-      margin-left: -190px;
+      margin-left: -155px;
     }
 
     .menu__header--shrink {
@@ -26,19 +27,19 @@
 
     .menu {
       background: var(--box-background-color);
-      width: 280px;
+      width: 230px;
       position: absolute;
       height: 100%;
       border-radius: 30px;
       box-sizing: border-box;
-      padding: 40px 0;
+      padding: 20px 0;
       .func-flex(space-between, center, column);
 
       &__header {
         .func-flex(flex-start);
         width: 100%;
         padding-left: 30px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         transition: @transition-time;
 
         .header_main {
@@ -46,8 +47,8 @@
           .func-flex(flex-start);
 
           &__logo {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             object-fit: contain;
             border-radius: 50%;
             border: 5px solid var(--background-color);
@@ -56,8 +57,8 @@
             .func-flex();
 
             & img {
-              width: 40px;
-              height: 40px;
+              width: 30px;
+              height: 30px;
               object-fit: cover;
             }
           }
@@ -66,7 +67,7 @@
             height: 50px;
             line-height: 50px;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             margin-left: 20px;
             color: var(--nav-active-color);
@@ -82,22 +83,20 @@
 
         .nav_container{
           flex: 500px;
-          overflow-x: visible;
         }
 
         .nav__item {
           width: 100%;
-          height: 58px;
+          height: 30px;
           border-radius: 5px 0 0 20px;
-          padding: 20px 32px;
-          margin: 20px 0;
+          padding: 20px 15px 20px 22px;
+          margin: 10px 0;
           .func-flex(flex-start);
           position: relative;
           z-index: 1;
           transition: @transition-time;
           color: var(--font-color);
-          font-size: 17px;
-          font-weight: 700;
+          font-weight: 550;
           cursor: pointer;
 
           &::before {
@@ -133,7 +132,7 @@
             }
 
             &::after {
-              width: 80px;
+              width: 70px;
             }
 
             .nav__item_icon {
@@ -148,7 +147,8 @@
           }
 
           &_content {
-            margin-left: 40px;
+            margin-left: 30px;
+            font-weight: bold;
           }
         }
       }
@@ -158,8 +158,8 @@
         transition: @transition-time;
 
         &_icon {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           background-color: var(--box-background-color);
           border-radius: 50%;
           box-shadow: 5px 5px 8px 5px var(--main-shadow-color);
@@ -177,11 +177,11 @@
         background-color: var(--background-color);
 
         &--shrink {
-          transform: translateX(-280px);
+          transform: translateX(-230px);
         }
 
         &__title {
-          font-size: 22px;
+          font-size: 16px;
           font-weight: 700;
           color: var(--nav-active-color);
         }
@@ -189,14 +189,13 @@
         &__info,
         &__btn {
           margin-top: 10px;
-          font-size: 18px;
           font-weight: 500;
           color: var(--font-color);
         }
 
         &__btn {
           background-color: var(--theme-color);
-          padding: 10px 20px;
+          padding: 5px 10px;
           color: var(--box-background-color);
           border-radius: 10px;
           .func-flex(space-between);

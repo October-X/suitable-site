@@ -3,13 +3,13 @@ import * as React from 'react';
 import * as THREE from 'three';
 import styles from './style.less';
 import ResizeDetector from 'react-resize-detector';
-import { debounce } from '@/utils/common';
+import {debounce} from '@/utils/common';
 import {
   setVisualAngle,
   drawFrontArrow,
   modifyCubeSize,
   destoryThreeComponent,
-} from '@/utils/threeCommom';
+} from '@/utils/threeCommon';
 
 class MyComponent extends React.Component {
   constructor(props: any) {
@@ -115,7 +115,7 @@ class MyComponent extends React.Component {
     this.scene.add(this.cube);
     this.cube.add(this.edges);
 
-    this.camera.position.z = 40;
+    this.camera.position.z = 60;
     this.renderer.setClearColor(0xffffff);
     this.renderer.render(this.scene, this.camera);
     setVisualAngle(this.scene, this.camera, this.renderer);

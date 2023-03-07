@@ -1,34 +1,32 @@
 .root{
     :global{
         .slider {
-            width: 230px;
-            padding: 1px;
+            width: 180px;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 0 10px 1px var(--main-shadow-color);
-            font-size: 16px;
             transition: @transition-time;
 
-            &:hover{
+            &:hover {
                 box-shadow: 0 0 1px 1px var(--theme-color);
             }
 
             &__title,
             &__main {
                 .func-flex(space-between);
-                margin: 20px;
+                margin: 5px;
             }
 
             &__title_input {
-                width: 100px;
+                width: 70px;
                 height: 30px;
                 border-radius: 5px;
                 box-sizing: border-box;
-                padding-left: 20px;
             }
 
             &__main_bar {
                 width: 100%;
-                padding: 0 20px;
+                padding: 0 5px;
             }
         }
     }
