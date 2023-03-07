@@ -6,7 +6,8 @@ import {history} from 'umi';
 export default function Login() {
     const [type, setType] = useState<string>('login');
 
-    const vertifyPassword = ({getFieldValue}) => ({
+    // @ts-ignore
+    const verifyPassword = ({getFieldValue}) => ({
         validator(_: any, value: string) {
             if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
@@ -124,7 +125,7 @@ export default function Login() {
                                         required: true,
                                         message: '请输入确认密码',
                                     },
-                                    vertifyPassword,
+                                    verifyPassword,
                                 ]}
                                 hasFeedback
                             >

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AvatarSelector} from "@/components/AvatarSelector";
+import AvatarSelector from "@/components/AvatarSelector";
 
 const App = () => {
     return (

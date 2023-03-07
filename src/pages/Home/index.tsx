@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
             <div className={styles.container} onClick={handleGetColors}>
                 <Guide name={trim(name)}/>
             </div>
-            <VirualScroller></VirualScroller>
+            {/*<VirualScroller></VirualScroller>*/}
             {/* <CoordinateEditor></CoordinateEditor> */}
         </PageContainer>
   );
