@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
     const {name} = useModel('global');
 
     const handleGetColors = () => {
-        console.log('跳转');
+        console.log('跳转页面');
         history.push('/cube/hexahedron');
     };
 
