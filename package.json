@@ -16,6 +16,7 @@
     "@umijs/max": "^4.0.41",
     "animate.css": "^4.1.1",
     "antd": "^5.0.0",
+    "echarts": "^5.4.1",
     "react-resize-detector": "^7.1.2",
     "three": "^0.148.0"
   },
