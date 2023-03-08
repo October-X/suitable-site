@@ -1,9 +1,19 @@
 /* eslint-disable guard-for-in */
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './style.less';
+import {history} from "umi";
 
+//判断是否是首次进入
+let flag = 0
 const App: React.FC = (props: any) => {
     const {aside, main, rightAside} = props;
+
+    useEffect(() => {
+        if (!flag) {
+            history.replace('/home')
+            flag = 1
+        }
+    }, [])
 
     return (
         <div className={styles.root}>

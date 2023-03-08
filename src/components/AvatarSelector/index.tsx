@@ -2,23 +2,50 @@
 import React, {useImperativeHandle} from 'react';
 import styles from './style.less'
 import {Form, Image, Input, Modal, Skeleton, Space} from 'antd';
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {imageLoaded} from "@/utils/common";
+
+type Props = {
+    nickName?: string;
+    defaultValue?: number;
+}
 
 const images = new Array(21).fill(0).map((item: any, index: number) => {
     return {src: 'https://github.com/October-X/suitable-resources/blob/main/avatars/' + (index + 1) + '.png?raw=true'}
 })
 const loadedArr = new Array(21).fill(false)
 
-
-const AvatarSelector = React.forwardRef((props, ref) => {
+const AvatarSelector = React.forwardRef((props: Props, ref) => {
+    const {nickName, defaultValue} = props;
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [checkedAvatar, setCheckedAvatar] = useState(0)
+    const [checkedAvatar, setCheckedAvatar] = useState(1)
     const [isLoadedArr, setIsLoadedArr] = useState(new Array(21).fill(false))
+    const [isInit, setIsInit] = useState(false)
     const [form] = Form.useForm();
+
+
+    const init = () => {
+        if (nickName) {
+            form.setFieldsValue({
+                nickName: nickName
+            })
+        }
+        if (defaultValue) {
+            setCheckedAvatar(defaultValue)
+        }
+        if (isInit) return
+        images.forEach((item, index) => {
+            imageLoaded(item.src, () => {
+                loadedArr[index] = true
+                setIsLoadedArr([...loadedArr])
+            })
+        })
+        setIsInit(true)
+    }
 
     const showModal = () => {
         setIsModalOpen(true);
+        init()
     };
 
     useImperativeHandle(ref, () => ({
@@ -38,19 +65,6 @@ const AvatarSelector = React.forwardRef((props, ref) => {
         setIsModalOpen(false);
     };
 
-    useEffect(() => {
-        images.forEach((item, index) => {
-            imageLoaded(item.src, () => {
-                loadedArr[index] = true
-                setIsLoadedArr([...loadedArr])
-            })
-        })
-    }, [])
-
-    useEffect(() => {
-
-    })
-
     return (
         <Modal title="设置信息" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
             <div className={styles.root}>
@@ -62,7 +76,7 @@ const AvatarSelector = React.forwardRef((props, ref) => {
                                     <div className="header_avatar">
                                         <Image width={60}
                                                preview={false}
-                                               src={'https://github.com/October-X/suitable-resources/blob/main/avatars/' + (checkedAvatar + 1) + '.png?raw=true'}
+                                               src={'https://github.com/October-X/suitable-resources/blob/main/avatars/' + checkedAvatar + '.png?raw=true'}
                                                alt=''/>
                                     </div>
                                     <Form form={form}>
@@ -76,7 +90,7 @@ const AvatarSelector = React.forwardRef((props, ref) => {
                                             ]}
                                             hasFeedback
                                         >
-                                            <Input placeholder="请输入昵称" allowClear autocomplete="off"/>
+                                            <Input placeholder="请输入昵称" allowClear autoComplete="off"/>
                                         </Form.Item>
                                     </Form>
                                 </Space>
@@ -86,7 +100,7 @@ const AvatarSelector = React.forwardRef((props, ref) => {
                                     images.map((item, index: number) => {
                                         return isLoadedArr[index] ?
                                             <div className="avatar__main_item" key={'avatar' + index}
-                                                 onClick={() => setCheckedAvatar(index)}>
+                                                 onClick={() => setCheckedAvatar(index + 1)}>
                                                 <Image width={50}
                                                        preview={false}
                                                        src={'https://github.com/October-X/suitable-resources/blob/main/avatars/' + (index + 1) + '.png?raw=true'}

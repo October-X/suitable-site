@@ -26,11 +26,11 @@ export const setVisualAngle = (scene, camera, renderer) => {
 
 /**
  * 绘制箭头
- * @param color 
- * @param originCoordinate 
- * @param targetCoordinate 
- * @param length 
- * @returns 
+ * @param color
+ * @param originCoordinate
+ * @param targetCoordinate
+ * @param length
+ * @returns
  */
 //@ts-ignore
 export const drawArrow = (color,originCoordinate, targetCoordinate, length) => {
@@ -54,12 +54,12 @@ export const drawFrontArrow = curry(drawArrow,0x000000,{x:0,y:0,z:-1});
 
 /**
  * 销毁three模块
- * @param scene 
- * @param cube 
- * @param renderer 
+ * @param scene
+ * @param cube
+ * @param renderer
  */
 // @ts-ignore
-export const destoryThreeComponent = (scene,cube,renderer)=>{
+export const distoryThreeComponent = (scene,cube,renderer)=>{
   scene.remove(cube);
   cube.geometry.dispose();
   cube.material.dispose();
@@ -69,11 +69,11 @@ export const destoryThreeComponent = (scene,cube,renderer)=>{
 
 /**
  * 修改尺寸
- * @param edage 
- * @param geometry 
- * @param cube 
- * @param color 
- * @param width 
+ * @param edage
+ * @param geometry
+ * @param cube
+ * @param color
+ * @param width
  */
 // @ts-ignore
 export const modifyCubeSize = (cube,color,width,size)=>{

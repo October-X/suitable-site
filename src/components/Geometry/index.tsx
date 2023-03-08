@@ -8,7 +8,7 @@ import {
   setVisualAngle,
   drawFrontArrow,
   modifyCubeSize,
-  destoryThreeComponent,
+  distoryThreeComponent,
 } from '@/utils/threeCommon';
 
 class MyComponent extends React.Component {
@@ -80,7 +80,7 @@ class MyComponent extends React.Component {
   }
 
   componentWillUnmount(): void {
-    destoryThreeComponent(this.scene, this.cube, this.renderer);
+    distoryThreeComponent(this.scene, this.cube, this.renderer);
   }
 
   /**

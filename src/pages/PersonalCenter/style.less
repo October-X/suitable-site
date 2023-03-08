@@ -81,6 +81,48 @@
           }
         }
       }
+
+      .main {
+        &__item {
+          .func-flex(flex-start, felx-start, row, wrap);
+          gap: 15px;
+          padding: 20px 0;
+        }
+      }
+    }
+  }
+}
+
+.card__item {
+  display: flex;
+  width: 250px;
+  height: 100px;
+  padding: 20px 20px;
+  border-radius: 13px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  .func-flex(space-between, flex-start, column);
+  cursor: pointer;
+  transition: @transition-time;
+
+  &:hover {
+    transform: translateY(-10px);
+    border: 1px solid var(--theme-color);
+  }
+
+  :global {
+
+    .item_title {
+      width: 100%;
+      font-weight: 500;
+      .func-flex(space-between);
+    }
+
+    .item_desc {
+      width: 100%;
+      color: #bbbbbb;
+      font-size: 12px;
+      .func-flex(space-between);
     }
   }
 }
