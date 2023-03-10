@@ -6,6 +6,7 @@ import styles from './index.less';
 import VirualScroller from '@/components/VirualScroller';
 import {history} from 'umi';
 import Loading from "@/loading";
+import FiberTest from '@/components/FiberTest'
 
 const HomePage: React.FC = () => {
     const {name} = useModel('global');
@@ -23,6 +24,7 @@ const HomePage: React.FC = () => {
             </div>
             {/*<VirualScroller></VirualScroller>*/}
             {/* <CoordinateEditor></CoordinateEditor> */}
+            <FiberTest />
         </PageContainer>
   );
 };

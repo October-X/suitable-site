@@ -53,7 +53,7 @@ const exercises = [
     },
     {
         id: 'e3',
-        title: 'ABE与DEF平行',
+        title: 'ABE与DGF平行',
         status: 2,
         time: moment(new Date()).format('YYYY-MM-DD-hh:mm:ss'),
     },
@@ -81,6 +81,10 @@ const AccessPage: React.FC = () => {
 
     const handleClick = () => {
         history.push('/cube/hexahedron')
+    }
+
+    const handlePractiseClick = ()=>{
+        history.push('/practise/123213')
     }
 
     return (
@@ -143,7 +147,7 @@ const AccessPage: React.FC = () => {
                         <Divider orientation="left">我的例题</Divider>
                         <div className="main__item">
                             {exercises.map((item, index) => (
-                                <div className={styles.card__item} key={index} onClick={handleClick}>
+                                <div className={styles.card__item} key={index} onClick={handlePractiseClick}>
                                     <div className="item_title">
                                         <span>{item.title}</span>
                                         <StatusTag value={item.status}/>

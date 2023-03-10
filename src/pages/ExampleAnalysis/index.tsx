@@ -1,9 +1,9 @@
-import {EllipsisOutlined, PlusOutlined} from '@ant-design/icons';
+import {PlusOutlined} from '@ant-design/icons';
 import type {ActionType, ProColumns} from '@ant-design/pro-components';
-import {ProTable, TableDropdown, PageContainer} from '@ant-design/pro-components';
-import {Button, Dropdown, Space, Tag} from 'antd';
+import {ProTable, PageContainer} from '@ant-design/pro-components';
+import {Button, Space, Tag} from 'antd';
 import {useRef} from 'react';
-import {request} from 'umi'
+import {request,history} from 'umi'
 
 type GithubIssueItem = {
     url: string;
@@ -75,6 +75,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
         render: (text, record, _, action) => [
             <a
                 key="editable"
+                onClick={()=>{history.push('/practiseEdit/123321')}}
             >
                 编辑
             </a>,

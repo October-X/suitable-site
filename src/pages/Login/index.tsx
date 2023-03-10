@@ -3,6 +3,8 @@ import styles from './style.less';
 import logoUrl from '@/assets/logo.png';
 import LoginForm from '@/components/LoginForm'
 import 'animate.css'
+import {EarthCanvas} from '@/components/canvas'
+import {StarsCanvas} from '@/components/canvas'
 
 const Login = () => {
 
@@ -22,6 +24,12 @@ const Login = () => {
                     </div>
                     <div className="login__left_content--small animate__animated animate__backInLeft">
                         全新的数学学习方式，立体化的数学教学，探索数学世界的无限可能
+                    </div>
+                    <div className="earth">
+                        <div>
+                            <EarthCanvas />
+                        </div>
+                        <StarsCanvas />
                     </div>
                 </div>
                 <div className="login-form login__right animate__animated animate__backInRight">

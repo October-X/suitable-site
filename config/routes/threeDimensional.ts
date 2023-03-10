@@ -11,8 +11,7 @@ export default [
         path: '/cube/hexahedron',
         component: './Geometry',
         strict: true,
-        headerRender: false,
-        menuRender: false,
+        layout: false,
     },
 
 ]

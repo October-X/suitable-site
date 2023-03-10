@@ -10,8 +10,7 @@ import {
 export default [
     {
         path: '/',
-        headerRender: false,
-        menuRender: false,
+        layout:false,
         component: '../layouts/default',
         routes: [
             {

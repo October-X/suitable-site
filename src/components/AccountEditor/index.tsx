@@ -3,7 +3,7 @@ import styles from './style.less'
 import {Modal, Form, Input} from "antd";
 import {useState} from "react";
 
-const AccountEditor = React.forwardRef((props: Props, ref) => {
+const AccountEditor = React.forwardRef((props, ref) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm();
 

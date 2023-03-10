@@ -18,7 +18,10 @@
     "antd": "^5.0.0",
     "echarts": "^5.4.1",
     "react-resize-detector": "^7.1.2",
-    "three": "^0.148.0"
+    "three": "^0.149.0",
+    "@react-three/drei": "^9.56.24",
+    "@react-three/fiber": "^8.11.1",
+    "maath": "^0.5.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
