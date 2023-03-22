@@ -27,10 +27,10 @@ const Login = () => {
                     </div>
                     <div className="earth">
                         <div>
-                            <EarthCanvas />
+                            <EarthCanvas/>
                         </div>
-                        <StarsCanvas />
                     </div>
+                    <StarsCanvas/>
                 </div>
                 <div className="login-form login__right animate__animated animate__backInRight">
                     <LoginForm/>

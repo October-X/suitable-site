@@ -1,6 +1,7 @@
 import { PageContainer } from '@ant-design/pro-components';
 import { history } from 'umi';
 import styles from './style.less';
+import HeadBar from "@/components/HeadBar";
 
 // 切割数组，默认四个为一组
 const sliceArr = (arr: [], count?: number = 4) => {
@@ -46,16 +47,17 @@ const ModelDisplay: React.FC = () => {
 
   return (
     <PageContainer ghost>
-      <div className={styles.models}>
-        {cubes.map((item, index) => (
-          <div className={styles.model__item} key={index} onClick={handleClick}>
-            <div className="model__item_img"></div>
-            <div className="model__item_main">
-              <div className="main__title">{item.name}</div>
-              <div className="main__content">{item.desc}</div>
-            </div>
-          </div>
-        ))}
+        <HeadBar title="模型展示"/>
+        <div className={styles.models}>
+            {cubes.map((item, index) => (
+                <div className={styles.model__item} key={index} onClick={handleClick}>
+                    <div className="model__item_img"></div>
+                    <div className="model__item_main">
+                        <div className="main__title">{item.name}</div>
+                        <div className="main__content">{item.desc}</div>
+                    </div>
+                </div>
+            ))}
       </div>
     </PageContainer>
   );

@@ -2,8 +2,9 @@ import {EllipsisOutlined, PlusOutlined} from '@ant-design/icons';
 import type {ActionType, ProColumns} from '@ant-design/pro-components';
 import {ProTable, TableDropdown, PageContainer} from '@ant-design/pro-components';
 import {Button, Dropdown, Space, Tag} from 'antd';
-import {useRef} from 'react';
+import React, {useRef} from 'react';
 import {request} from 'umi'
+import HeadBar from "@/components/HeadBar";
 
 type GithubIssueItem = {
     url: string;
@@ -81,6 +82,7 @@ export default () => {
     return (
         <PageContainer ghost
         >
+            <HeadBar title="用户管理"/>
             <ProTable<GithubIssueItem>
                 columns={columns}
                 actionRef={actionRef}

@@ -15,6 +15,7 @@ import StatusTag from "@/components/statusTag";
 import React, {useRef} from "react";
 import {history} from "umi";
 import moment from "moment";
+import HeadBar from "@/components/HeadBar";
 
 const cubes = [
     {
@@ -90,6 +91,7 @@ const AccessPage: React.FC = () => {
     return (
         <PageContainer ghost
         >
+            <HeadBar title="个人中心"/>
             <div className={styles.root}>
                 <div className="personal-center">
                     <div className="header">

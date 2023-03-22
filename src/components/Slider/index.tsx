@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { Slider,InputNumber } from 'antd';
+import React from 'react';
+import {Slider, InputNumber} from 'antd';
 import styles from './style.less';
 
 const App: React.FC = (props: any) => {
 
-  const {label,onChange,min,max,name} = props
-  const [inputValue, setInputValue] = useState(1);
+    const {label, onChange, min, max, name, value} = props
 
   const handleChange = (newValue: number) => {
     onChange({[name]: newValue});
-    setInputValue(newValue);
   };
 
   return (
@@ -22,7 +20,7 @@ const App: React.FC = (props: any) => {
                    className="slider__title_input"
                    min={min}
                    max={max}
-                   value={inputValue}
+                   value={value}
                    onChange={handleChange}
                />
            </div>
@@ -31,7 +29,7 @@ const App: React.FC = (props: any) => {
                    min={1}
                    max={40}
                    onChange={handleChange}
-                   value={typeof inputValue === 'number' ? inputValue : 0}
+                   value={typeof value === 'number' ? value : 0}
                    style={{width: '100%'}}
                />
            </div>

@@ -1,4 +1,5 @@
 import {PageContainer} from '@ant-design/pro-components';
+import HeadBar from "@/components/HeadBar";
 import {history} from 'umi';
 import styles from './style.less';
 import {AppstoreOutlined, UserOutlined} from '@ant-design/icons'
@@ -38,6 +39,7 @@ const AccessPage: React.FC = () => {
 
     return (
         <PageContainer ghost>
+            <HeadBar title="几何中心"/>
             <div className={styles.cards}>
                 {cubes.map((item, index) => (
                     <div className={styles.card__item} key={index} onClick={handleClick}>

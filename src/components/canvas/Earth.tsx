@@ -8,7 +8,7 @@ const Earth = () => {
     const earth = useGLTF("./planet/scene.gltf");
 
     return (
-        <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0}/>
+        <primitive object={earth.scene} scale={3} position-y={0} rotation-y={0}/>
     );
 };
 
@@ -34,7 +34,7 @@ const EarthCanvas = () => {
         >
             <Suspense fallback={<CanvasLoader/>}>
                 <OrbitControls
-                    autoRotate
+                    autoRotate={true}
                     enableZoom={false}
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}

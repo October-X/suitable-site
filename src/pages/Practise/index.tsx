@@ -33,7 +33,7 @@ const Practise = (props: Props) => {
         },
     ]
 
-    const handleChange = (e: Event) => {
+    const handleChange = (e: any) => {
         setChecked(e?.target?.value)
     }
 

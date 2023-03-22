@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './style.less';
 import { LeftCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from '@umijs/max';
@@ -11,17 +11,29 @@ import {
 
 const FunctionMenu: React.FC = (props: any) => {
   const navigator = useNavigate();
+  const {changeSize} = props;
+  const [size, setSize] = useState({
+    depth: 20,
+    width: 20,
+    height: 20,
+  })
 
   const handleGoBack = () => {
     navigator(-1);
   };
 
-  const handleBtnChange = (val:object|string)=>{
+  const handleBtnChange = (val: object | string) => {
     console.log(val)
   }
 
-  const handleSliderChange = (val:object)=>{
-    console.log(val)
+  const handleSliderChange = (val: object) => {
+    const newSize = {
+      ...size,
+      ...val
+    }
+    console.log(newSize)
+    setSize(newSize)
+    changeSize(newSize)
   }
 
   const handleColorChange = (val:object)=>{
@@ -46,13 +58,13 @@ const FunctionMenu: React.FC = (props: any) => {
         <div className="function-menu__nav">
           <div className="nav_container">
             <div className="nav__item">
-              <Slider label='长' name='length' onChange={handleSliderChange} min={1} max={40}/>
+              <Slider label='长' name='depth' onChange={handleSliderChange} min={1} max={40} value={size.depth}/>
             </div>
             <div className="nav__item">
-              <Slider label='宽' name='width' onChange={handleSliderChange} min={1} max={40}/>
+              <Slider label='高' name='width' onChange={handleSliderChange} min={1} max={40} value={size.width}/>
             </div>
             <div className="nav__item">
-              <Slider label='高' name='height' onChange={handleSliderChange} min={1} max={40}/>
+              <Slider label='宽' name='height' onChange={handleSliderChange} min={1} max={40} value={size.height}/>
             </div>
             <div className="nav__item">
               <ColorSelector label='涂色' name='cubeColor' onClick={handleColorChange}/>

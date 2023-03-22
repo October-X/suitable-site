@@ -30,7 +30,7 @@ class MyComponent extends React.Component {
   }
 
   handleResize = (width, height) => {
-    this.setState({ width, height });
+    this.setState({width, height});
     console.log(width, height);
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
@@ -38,17 +38,17 @@ class MyComponent extends React.Component {
   };
   debounceHandleResize = debounce(this.handleResize, 100);
 
-  handleClick = () => {
+  changeSize = (size) => {
+    const {depth = 1, width = 1, height = 1} = size
     //改变尺寸
     this.cube.remove(this.edges);
     this.edges = modifyCubeSize(this.cube, 0xbeaa, 1, {
-      depth: 1,
-      width: 1,
-      height: 1,
+      depth,
+      width,
+      height,
     });
     this.renderer.render(this.scene, this.camera);
-
-    this.handleSetColor(0x123345, 0x1245);
+    this.handleSetColor(0xbdecaa, 0xbdaa);
 
     //将箭头重新绘制箭头
     this.cube.remove(this.arrowHelper);
@@ -211,21 +211,21 @@ class MyComponent extends React.Component {
 
   render() {
     return (
-      <>
-        <div
-          onClick={this.handleClick}
-          style={{ position: 'fixd' }}
-        >
-          设置尺寸
-        </div>
-        <ResizeDetector
-          handleWidth
-          handleHeight
-          onResize={this.debounceHandleResize}
-        >
-          <div ref={this.elementRef} className={styles.container}></div>
-        </ResizeDetector>
-      </>
+        <>
+          {/*<div*/}
+          {/*  onClick={this.handleClick}*/}
+          {/*  style={{ position: 'fixd' }}*/}
+          {/*>*/}
+          {/*  设置尺寸*/}
+          {/*</div>*/}
+          <ResizeDetector
+              handleWidth
+              handleHeight
+              onResize={this.debounceHandleResize}
+          >
+            <div ref={this.elementRef} className={styles.container}></div>
+          </ResizeDetector>
+        </>
     );
   }
 }

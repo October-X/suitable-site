@@ -6,24 +6,45 @@
   overflow: hidden;
   .func-flex();
   position: relative;
-  //background: url('../../assets/login-bg.png') no-repeat center center/100%, 100%;
-  background-size: cover;
-  background-color: #060816;
+  background-size: 100% 100%;
+  //background-color: #060816;
   background-color: var(--background-color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    //background-image: url('../../assets/login-bg2.jpg');
+    background-size: 100% 100%;
+    filter: blur(8px);
+    z-index: -1;
+  }
 
   :global {
     .login {
       width: 100%;
-      height: 500px;
+      //height: 500px;
       padding: 37px 30px 0 30px;
-      .func-flex();
+      .func-flex(space-around);
 
 
       &__left {
-        width: 345px;
-        margin-right: 150px;
+        width: 560px;
+        height: 560px;
+        //margin-right: 150px;
+        background-color: #060816;
+        position: relative;
+        border-radius: 33% 67% 62% 38% / 54% 49% 51% 46%;
+        overflow: hidden;
+        .func-flex(center, center, column);
 
         &_title {
+          position: fixed;
+          top: 50px;
+          left: 50px;
           .func-flex(flex-start);
 
           .title__logo {
@@ -55,14 +76,23 @@
             font-size: 36px;
             line-height: 100%;
             margin-bottom: 20px;
+            color: #ffffff;
+            z-index: 999;
+            transition: @transition-time;
+
+            &:hover {
+              letter-spacing: 10px;
+              text-shadow: 0 0 20px #ffffff;
+            }
           }
 
           &--small {
             font-weight: 400;
             font-size: 16px;
             line-height: 180%;
-            color: #555555;
-            margin-bottom: 20px;
+            color: var(--theme-color);
+            margin-bottom: 10px;
+            text-align: center;
           }
         }
 
@@ -76,20 +106,19 @@
           height: 300px;
           border-radius: 50%;
           //overflow: hidden;
-          background-color: #060816;
-          z-index: 0;
+          //background-color: #060816;
+          z-index: 999;
 
-          &:after{
-            content:'';
+          &:after {
+            content: '';
             position: absolute;
             width: 100%;
-            height:100%;
+            height: 100%;
             left: 50%;
             top: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             border-radius: 50%;
             background-color: #060816;
-            box-shadow: 0 0 10px 2px #cccccc;
             z-index: -1;
           }
         }
