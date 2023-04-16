@@ -7,12 +7,13 @@ interface IntProBtn{
     name:string;
     type:string;
     onChange:any;
-    icon:React.FC;
+    icon?:React.FC;
+    width?:number;
+    switchValue?:boolean;
 }
 
 const ProBtn = (props: IntProBtn) => {
-const {label,type,onChange,name,icon:Icon} = props
-
+const {label,type,onChange,name,icon:Icon,width,switchValue} = props
   const handleChange = (checked: boolean) => {
     onChange({[name]:checked});
   };
@@ -23,10 +24,10 @@ const {label,type,onChange,name,icon:Icon} = props
 
   return (
     <div className={styles.root}>
-        <div className="ProBtn">
+        <div className="ProBtn" style={width&&{width}||{}}>
             <div className="ProBtn__title">{label}</div>
             <div className="ProBtn__btn">
-                {type === 'switch'?<Switch defaultChecked onChange={handleChange} />:<div onClick={onClick}><Icon /></div>}
+                {type === 'switch'?<Switch onChange={handleChange} checked={switchValue}/>:<div onClick={onClick}>{Icon&&<Icon/>}</div>}
             </div>
         </div>
     </div>

@@ -5,10 +5,15 @@
         .coordinate-editor {
             height: 100%;
             .func-flex(flex-start, center, column);
+            margin: -15px 0 -15px 0;
 
             &__item {
-                margin: 30px 0;
+                margin: 10px 0;
                 .func-flex();
+
+                &:first-child{
+                    margin-top: 20px;
+                }
             }
 
             .shadow-container {
@@ -52,6 +57,44 @@
             .demo {
                 position: fixed;
                 top: 0px;
+            }
+        }
+    }
+}
+
+.line{
+    :global{
+        .line__selector{
+            margin-top: 20px;
+            .func-flex(flex-start,flex-start);
+            gap: 50px;
+        }
+        .line__result{
+            padding: 10px;
+            border: 1px solid #bbbbbb;
+            min-height: 50px;
+            border-radius: 10px;
+            margin-top: 20px;
+            .func-flex(flex-start);
+            flex-wrap: wrap;
+            gap: 32px;
+            &_item{
+                width: 80px;
+                text-align: center;
+                color: #323232;
+                letter-spacing: 5px;
+                background-color: #f0f0f0;
+                border-radius: 5px;
+                padding: 5px;
+                position: relative;
+
+                &__btn{
+                    position: absolute;
+                    color: #919191;
+                    top: -10px;
+                    right: -5px;
+                    cursor: pointer;
+                }
             }
         }
     }

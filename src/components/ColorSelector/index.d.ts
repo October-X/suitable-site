@@ -1,5 +1,5 @@
 export interface ColorSelector {
     label:string;
     name:string;
-    onClick: ({}) => void;
+    onChange: (color:string) => void;
 }

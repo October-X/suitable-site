@@ -6,8 +6,9 @@ import {useState} from "react";
 import {imageLoaded} from "@/utils/common";
 
 type Props = {
-    nickName?: string;
+    nickname?: string;
     defaultValue?: number;
+    onOk?:(val:{avatar:string,nickName:string})=>void;
 }
 
 const images = new Array(21).fill(0).map((item: any, index: number) => {
@@ -16,22 +17,22 @@ const images = new Array(21).fill(0).map((item: any, index: number) => {
 const loadedArr = new Array(21).fill(false)
 
 const AvatarSelector = React.forwardRef((props: Props, ref) => {
-    const {nickName, defaultValue} = props;
+    const {nickname, defaultValue,onOk} = props;
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [checkedAvatar, setCheckedAvatar] = useState(1)
+    const [checkedAvatar, setCheckedAvatar] = useState('')
     const [isLoadedArr, setIsLoadedArr] = useState(new Array(21).fill(false))
     const [isInit, setIsInit] = useState(false)
     const [form] = Form.useForm();
 
 
     const init = () => {
-        if (nickName) {
+        if (nickname) {
             form.setFieldsValue({
-                nickName: nickName
+                nickname: nickname
             })
         }
-        if (defaultValue) {
-            setCheckedAvatar(defaultValue)
+        if(defaultValue){
+            setCheckedAvatar(defaultValue+'')
         }
         if (isInit) return
         images.forEach((item, index) => {
@@ -49,14 +50,18 @@ const AvatarSelector = React.forwardRef((props: Props, ref) => {
     };
 
     useImperativeHandle(ref, () => ({
-        showModal
+        showModal,
+        closeModal:()=>setIsModalOpen(false)
     }))
 
     const handleOk = () => {
         //todo 验证表单，请求接口提交
         form.validateFields().then((res) => {
-            const nickName = res.nickName
-            console.log(nickName)
+            const nickname = res.nickname
+            onOk?.({
+                avatar:checkedAvatar,
+                nickname
+            })
             setIsModalOpen(false);
         })
     };
@@ -76,12 +81,12 @@ const AvatarSelector = React.forwardRef((props: Props, ref) => {
                                     <div className="header_avatar">
                                         <Image width={60}
                                                preview={false}
-                                               src={'https://github.com/October-X/suitable-resources/blob/main/avatars/' + checkedAvatar + '.png?raw=true'}
+                                               src={checkedAvatar+''}
                                                alt=''/>
                                     </div>
                                     <Form form={form}>
                                         <Form.Item
-                                            name="nickName"
+                                            name="nickname"
                                             rules={[
                                                 {
                                                     required: true,
@@ -100,10 +105,10 @@ const AvatarSelector = React.forwardRef((props: Props, ref) => {
                                     images.map((item, index: number) => {
                                         return isLoadedArr[index] ?
                                             <div className="avatar__main_item" key={'avatar' + index}
-                                                 onClick={() => setCheckedAvatar(index + 1)}>
+                                                 onClick={() => setCheckedAvatar(item.src)}>
                                                 <Image width={50}
                                                        preview={false}
-                                                       src={'https://github.com/October-X/suitable-resources/blob/main/avatars/' + (index + 1) + '.png?raw=true'}
+                                                       src={item.src}
                                                        alt=''/>
                                             </div> : <Skeleton.Avatar active shape="circle" size={50}
                                                                       key={'avatarLoading' + index}/>

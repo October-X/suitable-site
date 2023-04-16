@@ -3,18 +3,10 @@ import styles from './style.less'
 import {Modal, Form, Input} from "antd";
 import {useState} from "react";
 
-const AccountEditor = React.forwardRef((props, ref) => {
+const AccountEditor = React.forwardRef((props:any, ref) => {
+    const {username,onOk} = props
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm();
-
-    const showModal = () => {
-        setIsModalOpen(true);
-
-    };
-
-    useImperativeHandle(ref, () => ({
-        showModal
-    }))
 
     // @ts-ignore
     const verifyPassword = ({getFieldValue}) => ({
@@ -32,7 +24,10 @@ const AccountEditor = React.forwardRef((props, ref) => {
         //todo 验证表单，请求接口提交
         form.validateFields().then((res) => {
             console.log(res)
-            setIsModalOpen(false);
+            onOk({
+                oldPassword:res.oldPassword,
+                newPassword:res.newPassword
+            })
         })
     };
 
@@ -40,11 +35,16 @@ const AccountEditor = React.forwardRef((props, ref) => {
         setIsModalOpen(false);
     };
 
-    useEffect(() => {
-        form.setFieldsValue({
-            username: '牛牛'
-        })
-    }, [])
+    useImperativeHandle(ref, () => ({
+        showModal:()=> {
+            setIsModalOpen((true))
+            form.setFieldsValue({
+                username: username
+            })
+        },
+        closeModal:handleCancel
+    }))
+
     return (
         <Modal title="设置信息" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
             <div className={styles.root}>

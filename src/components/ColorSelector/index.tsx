@@ -4,7 +4,7 @@ import {ColorSelector} from './index.d'
 
 const ColorPicker = (props:ColorSelector) => {
 
-    const {label,name,onClick} = props
+    const {label,onChange} = props
 
     const colors = [
         '#8472e2',
@@ -16,7 +16,7 @@ const ColorPicker = (props:ColorSelector) => {
     ]
 
     const handleClick:(val:string)=>void = (color:string)=>{
-        onClick({[name]: color})
+        onChange(color)
     }
 
   return (

@@ -56,3 +56,25 @@ export function allImagesLoaded(images: imagesItem[], callback: () => void) {
     img.src = images[i].src;
   }
 }
+
+/**
+ * true为前者时间更大
+ * @param firstTime
+ * @param secondTime
+ */
+export const compareTwoTime = (firstTime:string,secondTime:string)=>{
+  const _firstTime = new Date(firstTime)
+  const _secondTime = new Date(secondTime)
+
+  return _firstTime.valueOf()>_secondTime.valueOf()
+}
+
+/**
+ * true为时间未到
+ * @param time
+ */
+export const compareTimeWithNow = (time:string)=>{
+  const _time = new Date(time)
+  const nowTime = new Date();
+  return nowTime.valueOf()<_time.valueOf()
+}

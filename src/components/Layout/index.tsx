@@ -10,7 +10,7 @@ const App: React.FC = (props: any) => {
 
     useEffect(() => {
         if (!flag) {
-            history.replace('/home')
+            // history.replace('/home')
             flag = 1
         }
     }, [])

@@ -38,6 +38,12 @@ export default [
                 icon: FundFilled,
             },
             {
+                name: '学生管理',
+                path: '/studentManagement',
+                component: './StudentManagement',
+                icon: SmileFilled,
+            },
+            {
                 name: '用户管理',
                 path: '/userManagement',
                 component: './UserManagement',
@@ -55,6 +61,7 @@ export default [
                 component: '../example/avatarSelector',
                 icon: DribbbleCircleFilled,
             },
+
             // {
             //   name: ' 测试2',
             //   path: '/test2',

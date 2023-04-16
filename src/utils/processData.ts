@@ -26,3 +26,13 @@ export const emptyExist = (obj:any)=>{
     }
     return false
 }
+
+export const findChangedFirst = (arr1: [], arr2: []) => {
+    let index = 0
+    for (let i = 0; i < arr1.length; i++) {
+        if (!shallowCompare(arr1[i], arr2[i])) {
+            return i
+        }
+    }
+    return index
+}

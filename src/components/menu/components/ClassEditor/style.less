@@ -1,0 +1,87 @@
+.antCard {
+  background-repeat: no-repeat;
+  background-size: 100% 75%;
+  object-fit: fill;
+}
+
+.class__item {
+  cursor: pointer;
+  transition: @transition-time;
+
+  &:hover {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+.class__item--active {
+  cursor: pointer;
+  transform: translateY(-15px) rotate(-5deg);
+
+  :global{
+    .ant-card{
+      //box-shadow: 0 0 10px 2px var(--theme-color);
+    }
+  }
+
+}
+
+.card {
+  color: #ffffff;
+  font-size: 18px;
+  .func-flex(flex-start, flex-start, column);
+
+
+  :global {
+    .card__teacher {
+      align-self: flex-end;
+      font-size: 14px;
+    }
+  }
+}
+.container{
+  .func-flex(flex-start,flex-start);
+  gap:20px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 20px;
+
+  :global{
+    .empty{
+      width: 100%;
+      height: 100%;
+      .func-flex();
+    }
+  }
+}
+
+.bg{
+  .func-flex(space-between,flex-start,row,wrap);
+  gap:20px;
+
+  :global{
+    .bg__item{
+      transition: @transition-time;
+      width: 200px;
+      height: 75px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      img{
+        height: 75px;
+        cursor: pointer;
+      }
+      &:hover{
+        transform: scale(1.05);
+      }
+      &--active{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.5);
+        z-index: 1;
+        .func-flex();
+      }
+    }
+  }
+}

@@ -5,71 +5,67 @@ import {Button, Dropdown, Space, Tag} from 'antd';
 import React, {useRef} from 'react';
 import {request} from 'umi'
 import HeadBar from "@/components/HeadBar";
+import Transition from "@/components/Transition";
+import Service from "@/api";
+import global from "@/global";
 
-type GithubIssueItem = {
-    url: string;
-    id: number;
-    number: number;
-    title: string;
-    labels: {
-        name: string;
-        color: string;
-    }[];
-    state: string;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at?: string;
-};
+const roles = [
+    '管理员',
+    '老师',
+    '学生'
+]
 
-const columns: ProColumns<GithubIssueItem>[] = [
+const columns: ProColumns[] = [
     {
         dataIndex: 'index',
         valueType: 'indexBorder',
         width: 48,
     },
     {
+        title: 'ID',
+        dataIndex: 'id',
+        ellipsis: true,
+        hideInSearch:true,
+    },
+    {
         title: '学号',
-        dataIndex: 'title',
+        dataIndex: 'username',
         copyable: true,
         ellipsis: true,
-        tip: '标题过长会自动收缩',
     },
     {
         title: '姓名',
-        dataIndex: 'title',
+        dataIndex: 'nickname',
         copyable: true,
         ellipsis: true,
-        tip: '标题过长会自动收缩',
     },
     {
         title: '角色',
-        dataIndex: 'title',
-        copyable: true,
+        dataIndex: 'role',
         ellipsis: true,
-        tip: '标题过长会自动收缩',
+        render:(text,recode)=>(roles[recode.role-1])
     },
-    {
-        title: '班级',
-        dataIndex: 'title',
-        copyable: true,
-        ellipsis: true,
-        tip: '标题过长会自动收缩',
-    },
+    // {
+    //     title: '班级',
+    //     dataIndex: 'title',
+    //     copyable: true,
+    //     ellipsis: true,
+    //     tip: '标题过长会自动收缩',
+    // },
     {
         title: '操作',
         valueType: 'option',
         key: 'option',
-        render: (text, record, _, action) => [
+        render: (text, record,) => [
             <a
-                key="editable"
+                key="edit"
             >
                 编辑
             </a>,
             <a href={record.url} target="_blank" rel="noopener noreferrer" key="view">
                 查看
             </a>,
-            <a href={record.url} target="_blank" rel="noopener noreferrer" key="view">
+            <a href={record.url} target="_blank" rel="noopener noreferrer" key="delete">
                 删除
             </a>,
         ],
@@ -77,23 +73,36 @@ const columns: ProColumns<GithubIssueItem>[] = [
 
 ];
 
+
+
 export default () => {
     const actionRef = useRef<ActionType>();
+    const [userInfo] = global.useGlobal("userInfo")
+    const [currentClass] = global.useGlobal("currentClass")
+
+    const getStudents = (params:any)=>{
+        return Service.user.getUsers({
+            classId: currentClass.id,
+            teacherId: userInfo.id,
+            ...params
+        }).then((res)=>{
+            if(!res.code){
+                return res.data
+            }
+        })
+    }
     return (
+        <Transition>
         <PageContainer ghost
         >
             <HeadBar title="用户管理"/>
-            <ProTable<GithubIssueItem>
+            <ProTable
                 columns={columns}
                 actionRef={actionRef}
                 cardBordered
-                request={async (params = {}, sort, filter) => {
-                    console.log(sort, filter);
-                    return request<{
-                        data: GithubIssueItem[];
-                    }>('https://proapi.azurewebsites.net/github/issues', {
-                        params,
-                    });
+                request={async (params , sort, filter) => {
+                    console.log(params);
+                    return getStudents(params);
                 }}
                 editable={{
                     type: 'multiple',
@@ -114,21 +123,9 @@ export default () => {
                         listsHeight: 400,
                     },
                 }}
-                form={{
-                    // 由于配置了 transform，提交的参与与定义的不同这里需要转化一下
-                    syncToUrl: (values, type) => {
-                        if (type === 'get') {
-                            return {
-                                ...values,
-                                created_at: [values.startTime, values.endTime],
-                            };
-                        }
-                        return values;
-                    },
-                }}
                 pagination={{
-                    pageSize: 5,
-                    onChange: (page) => console.log(page),
+                    defaultPageSize:10,
+                    showSizeChanger: true,
                 }}
                 dateFormatter="string"
                 headerTitle="高级表格"
@@ -139,5 +136,6 @@ export default () => {
                 ]}
             />
         </PageContainer>
+        </Transition>
     );
 };

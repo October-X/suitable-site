@@ -5,8 +5,8 @@
   :global {
     .controller {
       width: 230px;
-      border-radius: 30px;
       position: relative;
+      border-radius: 20px;
       height: 100%;
       transition: @transition-time;
       background-color: var(--box-background-color);
@@ -39,7 +39,6 @@
         .func-flex(flex-start);
         width: 100%;
         padding-left: 30px;
-        margin-bottom: 10px;
         transition: @transition-time;
 
         .header_main {
@@ -81,74 +80,131 @@
         overflow-y: auto;
         .func-flex(space-between, left, column);
 
-        .nav_container{
+        .nav_container {
           flex: 500px;
+          padding: 16px 0 0 10px;
         }
 
         .nav__item {
           width: 100%;
           height: 30px;
-          border-radius: 5px 0 0 20px;
-          padding: 20px 15px 20px 22px;
-          margin: 10px 0;
+          border-radius: 25px 0 0 25px;
+          padding: 25px 15px 25px 22px;
+          margin: 5px 0;
           .func-flex(flex-start);
           position: relative;
           z-index: 1;
-          transition: @transition-time;
           color: var(--font-color);
           font-weight: 550;
           cursor: pointer;
 
-          &::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            height: 70%;
-            left: 0;
-            transition: @transition-time;
-          }
-
-          &::after {
-            content: '';
-            position: absolute;
-            background-color: var(--theme-color);
-            // left: 32px;
-            left: -10px;
-            width: 0;
-            height: 100%;
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 30px;
-            transition: @transition-time;
-            // height: 5px;
-            z-index: -1;
-          }
-
           &--active {
             color: var(--nav-active-color);
-
-            &::before {
-              left: 10px;
-              background-color: var(--background-color);
-            }
-
-            &::after {
-              width: 70px;
+            background-color: var(--background-color);
+            &:hover{
+              color: var(--nav-active-color) !important;
             }
 
             .nav__item_icon {
-              color: var(--background-color);
+              color: var(--theme-color);
+              box-shadow: unset;
+
+              &::before, &::after {
+                content: '';
+                position: absolute;
+                transition: @transition-time;
+                width: 25px;
+                height: 25px;
+                background-color: var(--background-color);
+                z-index: 1;
+                left: 195px;
+              }
+
+              &::before {
+                top: -25px;
+              }
+
+              &::after {
+                bottom: -25px;
+              }
             }
+
+            .nav__item_content {
+              &::before, &::after {
+                content: '';
+                position: absolute;
+                transition: @transition-time;
+                width: 25px;
+                height: 25px;
+                background-color: var(--box-background-color);
+                left: 195px;
+                z-index: 1;
+              }
+
+              &::before {
+                border-radius: 0 0 25px 0;
+                top: -25px;
+              }
+
+              &::after {
+                border-radius: 0 25px 0 0;
+                bottom: -25px;
+              }
+            }
+          }
+
+          &:hover {
+            color: var(--theme-color);
+
+            .nav__item_pointer {
+              opacity: 1;
+              right: 20px;
+            }
+
+            .nav__item_icon--shrink {
+              color: var(--theme-color);
+            }
+          }
+
+          &_pointer {
+            position: absolute;
+            transition: @transition-time;
+            color: var(--theme-color);
+            right: 40px;
+            opacity: 0;
           }
 
           &_icon {
             width: 30px;
             height: 30px;
-            .func-flex()
+            margin-left: -10px;
+            border-radius: 50%;
+            background-color: var(--box-background-color);
+            box-shadow: -5px 5px 8px 3px var(--main-shadow-color);
+            .func-flex();
+
+            &--shrink {
+              &::before, &::after {
+                z-index: 1;
+                left: 39px !important;
+              }
+
+            }
           }
 
           &_content {
             margin-left: 30px;
             font-weight: bold;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &--shrink {
+              &::before, &::after {
+                border-radius: 0 0 25px 0;
+                left: 39px !important;
+              }
+
+            }
           }
         }
       }
@@ -239,3 +295,5 @@
     }
   }
 }
+
+

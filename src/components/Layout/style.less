@@ -1,26 +1,30 @@
 @import url('@/theme/default/var.css');
 
+body{
+    background-color: var(--background-color);
+}
+
 .root{
     :global{
         .suitable {
             height: 100vh;
-            padding: 20px;
+            padding: 15px;
             box-sizing: border-box;
             display: flex;
-            background-color: var(--background-color);
             font-size: 14px;
+            overflow:hidden;
 
             &__left {
                 flex: 0 1 auto;
-                border-radius: 20px;
             }
 
             &__main {
                 flex: 1 1 auto;
-                margin-left: 20px;
-                border-radius: 30px;
+                margin-left: 15px;
+                border-radius: 20px;
                 min-height: 90vh;
                 overflow-y: auto;
+                overflow-x:hidden;
                 position: relative;
                 background-color: var(--main-background-color);
                 color: var(--main-font-color);
@@ -28,7 +32,7 @@
             &__right{
                 flex: 0 1 auto;
                 margin-left: 20px;
-                border-radius: 30px;
+                border-radius: 20px;
             }
         }
     }

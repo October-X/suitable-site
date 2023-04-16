@@ -1,6 +1,6 @@
 .root {
   height: 100%;
-  font-size:14px;
+  font-size: 14px;
 
   :global {
     .practise {
@@ -16,8 +16,10 @@
         //background-color: pink;
         border-radius: 20px;
         box-shadow: 0 0 10px 1px #f1f1f1;
+        transition: @transition-time;
         //border: 1px solid var(--font-color);
       }
+
 
       &__right {
         height: auto;
@@ -58,17 +60,35 @@
             }
           }
 
-          &__btn{
+          &__btn {
             .func-flex(flex-end)
           }
 
-          &__analysis{
-            .analysis_result{
-            margin: 10px 0;
+          &__analysis {
+            .analysis_result {
+              margin: 10px 0;
             }
           }
+        }
+      }
+
+      .markdown {
+
+        img {
+          width: 100%;
+        }
+
+      }
+
+      .transition-container{
+        overflow: hidden;
+        height: 0;
+        &--open{
+          height: auto;
         }
       }
     }
   }
 }
+
+

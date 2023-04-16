@@ -2,11 +2,20 @@ import React from 'react';
 import {Slider, InputNumber} from 'antd';
 import styles from './style.less';
 
-const App: React.FC = (props: any) => {
+type Props = {
+    label:string;
+    onChange:({})=>void;
+    min:number;
+    max:number;
+    name:string;
+    value:number
+}
+
+const App = (props: Props) => {
 
     const {label, onChange, min, max, name, value} = props
 
-  const handleChange = (newValue: number) => {
+  const handleChange = (newValue:any) => {
     onChange({[name]: newValue});
   };
 

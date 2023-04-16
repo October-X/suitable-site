@@ -1,7 +1,8 @@
+import {Outlet} from 'umi';
 
-
-import { Outlet } from 'umi';
 
 export default function Layout() {
-  return <Outlet />;
+    return (
+        <Outlet/>
+    )
 }
